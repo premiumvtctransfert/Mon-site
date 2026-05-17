@@ -78,7 +78,7 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
 .services-card::before{content:'';position:absolute;top:0;left:8%;right:8%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
 .services-title{font-family:'Playfair Display',serif;font-size:12px;font-weight:400;color:var(--gold);margin-bottom:24px;letter-spacing:7px;text-transform:uppercase;text-align:center;opacity:.85;}
 .services-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;grid-auto-rows:1fr;}
-.service-item{display:flex;align-items:flex-start;gap:10px;padding:14px 12px;background:rgba(200,169,110,.02);border:1px solid rgba(200,169,110,.06);border-radius:1px;min-height:90px;}
+.service-item{display:flex;align-items:flex-start;gap:10px;padding:14px 12px;background:rgba(200,169,110,.02);border:1px solid rgba(200,169,110,.06);border-radius:1px;}
 .service-icon{flex-shrink:0;margin-top:2px;opacity:.85;width:18px;}
 .service-label{font-size:11px;font-weight:500;color:var(--white);letter-spacing:.3px;margin-bottom:3px;word-break:break-word;}
 .service-sub{font-size:10px;color:var(--subtle);letter-spacing:.5px;line-height:1.5;}
@@ -118,25 +118,6 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
 .cdot{width:4px;height:4px;border-radius:50%;background:#2a2a2a;cursor:pointer;transition:background .4s,transform .4s;}
 .cdot.on{background:var(--gold);transform:scale(1.3);}
 
-/* Leave a review toggle */
-.rev-toggle{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:20px;padding-top:20px;border-top:1px solid #161616;cursor:pointer;}
-.rev-toggle-label{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.6;transition:opacity .2s;}
-.rev-toggle-icon{width:14px;height:14px;border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;transition:transform .3s;}
-.rev-toggle-icon svg{width:8px;height:8px;stroke:var(--gold);transition:transform .3s;}
-.rev-toggle:hover .rev-toggle-label{opacity:1;}
-.rev-form{display:none;margin-top:20px;border-top:1px solid #161616;padding-top:20px;}
-.rev-form.open{display:block;}
-.rev-lbl{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:12px;}
-.star-row{display:flex;gap:8px;margin-bottom:14px;}
-.star{font-size:26px;color:#1e1e1e;cursor:pointer;min-width:34px;min-height:34px;display:flex;align-items:center;justify-content:center;line-height:1;transition:color .15s;}
-.star.on{color:var(--gold);}
-.rev-ta{width:100%;background:var(--dark3);border:1px solid #222;border-radius:1px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:15px;font-weight:300;padding:13px;outline:none;resize:none;margin-bottom:10px;}
-.rev-ta:focus{border-color:var(--gold-border-strong);}
-.rev-ta::placeholder{color:#1e1e1e;}
-.btn-rev{width:100%;background:transparent;border:1px solid var(--gold-border);color:rgba(200,169,110,.55);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;padding:14px;cursor:pointer;min-height:48px;transition:all .25s;}
-.btn-rev:active,.btn-rev:hover{background:var(--gold-dim);color:var(--gold);}
-.rev-ok{display:none;text-align:center;font-size:11px;color:var(--gold);letter-spacing:2px;margin-top:8px;}
-.rev-ok.show{display:block;}
 
 /* ── CARDS (form sections) ─────────────────── */
 .card{background:var(--dark2);border:1px solid #161616;border-radius:1px;padding:40px 28px 36px;margin-bottom:16px;position:relative;}
@@ -165,17 +146,55 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
 .aci{padding:12px 14px;font-size:13px;color:var(--muted);cursor:pointer;border-bottom:1px solid #1a1a1a;}
 .aci:active,.aci:hover{background:#141208;color:var(--gold);}
 
-/* Type select */
-.tsel-wrap{position:relative;}
-.tsel-wrap::after{content:'';position:absolute;right:2px;top:44%;width:5px;height:5px;border-right:1px solid var(--gold);border-bottom:1px solid var(--gold);transform:rotate(45deg);opacity:.35;pointer-events:none;}
-.tsel{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(200,169,110,0.2);border-radius:0;color:var(--white);font-family:'Montserrat',sans-serif;font-size:15px;font-weight:300;padding:12px 28px 12px 0;outline:none;-webkit-appearance:none;appearance:none;touch-action:manipulation;transition:border-bottom-color .3s;}
-.tsel:focus{border-bottom-color:var(--gold);background:transparent;}
-.tsel option{background:var(--dark2);}
+/* Type selector — boutons custom */
+.type-btns{display:flex;flex-direction:column;gap:0;margin-bottom:0;}
+.type-btn{
+  display:flex;align-items:center;gap:13px;
+  padding:13px 0;
+  background:transparent;border:none;
+  border-bottom:1px solid rgba(200,169,110,0.08);
+  cursor:pointer;min-height:50px;
+  touch-action:manipulation;
+  font-family:'Montserrat',sans-serif;
+  transition:all .2s;
+  text-align:left;width:100%;
+}
+.type-btn:last-child{border-bottom:1px solid rgba(200,169,110,0.2);}
+.type-btn-dot{
+  width:14px;height:14px;flex-shrink:0;
+  border:1px solid #2a2a2a;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;
+}
+.type-btn-dot::after{
+  content:'';width:5px;height:5px;border-radius:50%;
+  background:transparent;transition:background .2s;
+}
+.type-btn-content{display:flex;flex-direction:column;gap:2px;}
+.type-btn-label{font-size:13px;font-weight:400;color:var(--subtle);letter-spacing:.2px;transition:color .2s;}
+.type-btn-sub{font-size:10px;color:#333;letter-spacing:.5px;transition:color .2s;}
+.type-btn.on .type-btn-dot{border-color:var(--gold);}
+.type-btn.on .type-btn-dot::after{background:var(--gold);}
+.type-btn.on .type-btn-label{color:var(--white);}
+.type-btn.on .type-btn-sub{color:rgba(200,169,110,.5);}
+
+/* Sub-menu niveau 2 */
+.sub-menu{display:flex;flex-direction:column;border-left:1px solid rgba(200,169,110,.15);margin-left:7px;padding-left:16px;max-height:0;opacity:0;overflow:hidden;transition:max-height .35s ease, opacity .3s ease;}
+.sub-menu.open{max-height:400px;opacity:1;}
+.sub-btn{display:flex;align-items:center;gap:11px;padding:10px 0;background:transparent;border:none;border-bottom:1px solid rgba(200,169,110,.05);cursor:pointer;font-family:'Montserrat',sans-serif;text-align:left;width:100%;transition:all .2s;touch-action:manipulation;}
+.sub-btn:last-child{border-bottom:none;}
+.sub-btn-dot{width:10px;height:10px;flex-shrink:0;border:1px solid #2a2a2a;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.sub-btn-dot::after{content:'';width:4px;height:4px;border-radius:50%;background:transparent;transition:background .2s;}
+.sub-btn-label{font-size:13px;font-weight:400;color:var(--subtle);letter-spacing:.2px;transition:color .2s;}
+.sub-btn.on .sub-btn-dot{border-color:var(--gold);}
+.sub-btn.on .sub-btn-dot::after{background:var(--gold);}
+.sub-btn.on .sub-btn-label{color:var(--white);}
+/* Sub dir niveau 3 */
+.sub-dir-menu{display:flex;flex-direction:column;border-left:1px solid rgba(200,169,110,.1);margin-left:5px;padding-left:14px;margin-bottom:4px;max-height:0;opacity:0;overflow:hidden;transition:max-height .3s ease, opacity .25s ease;}
+.sub-dir-menu.open{max-height:200px;opacity:1;}
 
 /* Direction buttons */
-.dir-wrap{display:none;flex-direction:column;border:none;border-bottom:1px solid rgba(200,169,110,0.12);margin-bottom:24px;}
-.dir-wrap.show{display:flex;}
-.dir-btn{flex:1;padding:13px 4px;background:transparent;border:none;border-bottom:1px solid rgba(200,169,110,0.08);color:var(--subtle);touch-action:manipulation;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:400;letter-spacing:1.5px;cursor:pointer;min-height:46px;display:flex;align-items:center;gap:10px;transition:all .2s;text-align:left;}
+.dir-btn{flex:1;padding:13px 4px;background:transparent;border:none;border-bottom:1px solid rgba(200,169,110,0.08);color:var(--subtle);touch-action:manipulation;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:400;letter-spacing:.2px;cursor:pointer;min-height:46px;display:flex;align-items:center;gap:10px;transition:all .2s;text-align:left;}
 .dir-btn:last-child{border-bottom:none;}
 .dir-btn::before{content:'';width:4px;height:4px;border-radius:50%;background:#2a2a2a;flex-shrink:0;transition:background .2s;}
 .dir-btn.on{background:transparent;color:var(--gold);}
@@ -220,7 +239,7 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
 /* Checkboxes */
 .retour-wrap{margin-top:24px;}
 .retour-check,.payment-check{display:flex;align-items:center;gap:13px;padding:16px 0;background:transparent;border:none;border-bottom:1px solid rgba(200,169,110,0.1);cursor:pointer;min-height:52px;transition:all .25s;touch-action:manipulation;}
-.payment-check{margin-bottom:14px;}
+.payment-check{margin-bottom:14px;border-bottom:none;}
 .retour-check.on,.payment-check.on{border-bottom-color:rgba(200,169,110,0.4);background:transparent;}
 .retour-check.on .retour-label,.payment-check.on .retour-label{color:var(--white);}
 .retour-check.on .retour-sub,.payment-check.on .retour-sub{color:rgba(200,169,110,.5);}
@@ -231,14 +250,18 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
 .retour-label{font-size:13px;font-weight:400;color:var(--subtle);letter-spacing:.2px;}
 .retour-sub{font-size:11px;color:var(--subtle);opacity:.5;letter-spacing:.5px;}
 
-/* Notice */
-.notice-card{border:1px solid #141414;border-radius:1px;padding:14px 18px;margin-bottom:12px;}
-.notice-txt{font-size:12px;color:var(--subtle);line-height:1.9;}
-.notice-txt strong{color:#666;}
-
 /* Error */
 .err{font-size:12px;color:#b04040;letter-spacing:.5px;margin-top:8px;display:none;}
 .err.show{display:block;}
+
+/* ── MESSAGE CHAUFFEUR ───────────────────── */
+.msg-block{margin-top:6px;margin-bottom:0;padding:24px 0 20px;}
+.msg-block-header{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:18px;}
+.msg-block-title{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;font-style:normal;color:var(--gold);opacity:.7;letter-spacing:3.5px;text-transform:uppercase;}
+.msg-gem{width:4px;height:4px;background:var(--gold);transform:rotate(45deg);opacity:.4;flex-shrink:0;}
+.msg-ta{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(200,169,110,0.2);border-radius:0;color:var(--white);caret-color:var(--gold);font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;padding:10px 0;outline:none;resize:none;transition:border-bottom-color .3s;line-height:1.7;}
+.msg-ta:focus{border-bottom-color:var(--gold);}
+.msg-ta::placeholder{color:rgba(255,255,255,0.2);font-style:italic;-webkit-text-fill-color:rgba(255,255,255,0.2);}
 
 /* ── CTA ─────────────────────────────────── */
 .btn-cta{width:100%;background:var(--black);border:1px solid var(--gold-border-strong);border-radius:1px;color:var(--gold);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;padding:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:13px;margin-top:10px;min-height:58px;transition:all .35s;position:relative;overflow:hidden;}
@@ -246,6 +269,17 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
 .btn-cta:active::after{opacity:1;}
 .btn-cta:active{border-color:var(--gold);}
 .wa-icon{width:15px;height:15px;flex-shrink:0;fill:var(--gold);opacity:.85;}
+
+/* ── SHARE BUTTON ────────────────────────── */
+.share-btn{display:flex;align-items:center;gap:9px;background:transparent;border:1px solid var(--gold-border);border-radius:1px;padding:10px 20px;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--subtle);transition:all .3s;position:relative;overflow:hidden;touch-action:manipulation;}
+.share-btn:active{border-color:var(--gold-border-strong);color:var(--gold);}
+.share-btn svg{width:13px;height:13px;stroke:currentColor;flex-shrink:0;opacity:.7;transition:opacity .3s;}
+.share-btn:active svg{opacity:1;}
+.share-btn .label-share{transition:opacity .2s;}
+.share-btn .label-copied{position:absolute;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:8px;opacity:0;transition:opacity .2s;font-size:10px;letter-spacing:3px;color:var(--gold);}
+.share-btn.copied{border-color:rgba(200,169,110,.4);color:var(--gold);}
+.share-btn.copied .label-share{opacity:0;}
+.share-btn.copied .label-copied{opacity:1;}
 
 /* ── FOOTER ──────────────────────────────── */
 .footer{text-align:center;margin-top:36px;display:flex;flex-direction:column;gap:16px;align-items:center;}
@@ -260,6 +294,12 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
 .footer-legal{font-size:11px;color:#444;letter-spacing:.5px;text-align:center;line-height:2;margin-top:4px;}
 .footer-legal-link{color:#555;text-decoration:none;transition:color .2s;}
 .footer-legal-link:active{color:var(--gold);}
+
+/* Partner notice */
+.partner-notice{display:flex;align-items:flex-start;gap:10px;margin-top:14px;}
+.partner-notice-dot{width:3px;height:3px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;margin-top:5px;opacity:.5;}
+.partner-notice-text{font-size:11px;font-weight:300;color:var(--subtle);letter-spacing:.4px;line-height:1.9;}
+.partner-notice-text em{color:rgba(200,169,110,.6);font-style:normal;font-weight:400;}
 
 /* Stepper passagers */
 .pax-stepper{display:flex;align-items:center;justify-content:center;gap:0;border-bottom:1px solid rgba(200,169,110,0.2);padding:8px 0;height:44px;}
@@ -287,7 +327,7 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
     </div>
     <h1 id="h1">Votre prochain trajet,<br>avec la m&ecirc;me <em>excellence</em></h1>
     <div class="sep"><div class="gem"></div></div>
-    <p class="header-sub" id="header-sub">Planifiez en toute s&eacute;r&eacute;nit&eacute; 12h &agrave; l&apos;avance<br>Discr&eacute;tion &middot; Ponctualit&eacute; &middot; &Eacute;lectrique</p>
+    <p class="header-sub" id="header-sub">Planifiez en toute s&eacute;r&eacute;nit&eacute;, 12h &agrave; l&apos;avance<br>Discr&eacute;tion &middot; Ponctualit&eacute; &middot; Fluidit&eacute;</p>
   </header>
 
   <!-- DRIVER CARD -->
@@ -309,49 +349,108 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
   <!-- TRAJET -->
   <div class="card">
     <div class="card-title" id="c1">Votre trajet</div>
-    <div class="field" style="margin-bottom:18px;">
-      <label id="l-type">Type de course</label>
-      <div class="tsel-wrap">
-        <select class="tsel" id="type-course" onchange="onType(this.value)">
-          <option value="trajet" id="o-trajet">Trajet point &agrave; point</option>
-          <option value="aeroport" id="o-aeroport">A&eacute;roport &mdash; Toulouse-Blagnac</option>
-          <option value="gare" id="o-gare">Gare &mdash; Matabiau</option>
-          <option value="dispo" id="o-dispo">Mise &agrave; disposition</option>
-          <option value="longue" id="o-longue">Longue distance (+100 km)</option>
-        </select>
+    <div style="margin-bottom:0;">
+      <label id="l-type" style="font-size:10px;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);opacity:.7;display:block;margin-bottom:6px;margin-top:8px;">Type de course</label>
+      <div class="type-btns" id="type-btns">
+
+        <!-- TRANSFERT PRIVÉ -->
+        <div>
+          <button class="type-btn on" data-val="transfert" onclick="selectMain(this,'transfert')" type="button">
+            <div class="type-btn-dot"></div>
+            <div class="type-btn-content">
+              <span class="type-btn-label" id="o-transfert">Transfert priv&eacute;</span>
+              <span class="type-btn-sub" id="o-transfert-sub">Point &agrave; point &middot; A&eacute;roport &middot; Gare</span>
+            </div>
+          </button>
+          <div class="sub-menu open" id="sub-transfert">
+            <button class="sub-btn on" data-val="trajet" onclick="selectSub(this,'trajet')" type="button">
+              <div class="sub-btn-dot"></div>
+              <span class="sub-btn-label" id="o-trajet">Trajet point &agrave; point</span>
+            </button>
+            <button class="sub-btn" data-val="aeroport" onclick="selectSub(this,'aeroport')" type="button">
+              <div class="sub-btn-dot"></div>
+              <span class="sub-btn-label" id="o-aeroport">A&eacute;roport &mdash; Toulouse-Blagnac</span>
+            </button>
+            <div class="sub-dir-menu" id="dir-aeroport">
+              <button class="dir-btn on" id="dir-to" onclick="setDir('to')" type="button"><span id="dir-to-lbl">D&eacute;pose &agrave; l&apos;a&eacute;roport</span></button>
+              <button class="dir-btn" id="dir-from" onclick="setDir('from')" type="button"><span id="dir-from-lbl">Prise en charge &agrave; l&apos;a&eacute;roport</span></button>
+            </div>
+            <button class="sub-btn" data-val="gare" onclick="selectSub(this,'gare')" type="button">
+              <div class="sub-btn-dot"></div>
+              <span class="sub-btn-label" id="o-gare">Gare &mdash; Matabiau</span>
+            </button>
+            <div class="sub-dir-menu" id="dir-gare">
+              <button class="dir-btn on" id="dir-to-gare" onclick="setDir('to')" type="button"><span id="dir-to-gare-lbl">D&eacute;pose en gare</span></button>
+              <button class="dir-btn" id="dir-from-gare" onclick="setDir('from')" type="button"><span id="dir-from-gare-lbl">Prise en charge en gare</span></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- MISE À DISPOSITION -->
+        <div>
+          <button class="type-btn" data-val="dispo" onclick="selectMain(this,'dispo')" type="button">
+            <div class="type-btn-dot"></div>
+            <div class="type-btn-content">
+              <span class="type-btn-label" id="o-dispo">Mise &agrave; disposition</span>
+              <span class="type-btn-sub" id="o-dispo-sub">&Eacute;v&eacute;nements &middot; Business &middot; Shopping</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- LONGUE DISTANCE -->
+        <div>
+          <button class="type-btn" data-val="longue" onclick="selectMain(this,'longue')" type="button">
+            <div class="type-btn-dot"></div>
+            <div class="type-btn-content">
+              <span class="type-btn-label" id="o-longue">Longue distance</span>
+              <span class="type-btn-sub" id="o-longue-sub">+100 km &middot; Tarif sur devis</span>
+            </div>
+          </button>
+        </div>
+
       </div>
-    </div>
-    <div class="dir-wrap" id="dir-wrap">
-      <button class="dir-btn on" id="dir-to" onclick="setDir('to')"><span id="dir-to-lbl">D&eacute;pose &agrave; l&apos;a&eacute;roport</span></button>
-      <button class="dir-btn" id="dir-from" onclick="setDir('from')"><span id="dir-from-lbl">Prise en charge &agrave; l&apos;a&eacute;roport</span></button>
+      <!-- hidden input for send() -->
+      <select id="type-course" style="display:none;">
+        <option value="trajet">Trajet point à point</option>
+        <option value="aeroport">Aéroport — Toulouse-Blagnac</option>
+        <option value="gare">Gare — Matabiau</option>
+        <option value="dispo">Mise à disposition</option>
+        <option value="longue">Longue distance (+100 km)</option>
+      </select>
     </div>
     <div class="fg s">
       <div class="field">
         <label id="l-dep">Adresse de d&eacute;part</label>
         <div class="fw acw">
-          <input type="text" id="depart" placeholder="Tapez votre adresse…" autocomplete="off" oninput="ac(this,'ldep')" onblur="delayClose('ldep');validateField(this);iosCheck(this,'ldep')">
+          <input type="text" id="depart" placeholder="Tapez votre adresse…" autocomplete="off" oninput="ac(this,'ldep')" onblur="delayClose('ldep');validateField(this)">
           <div class="acl" id="ldep"></div>
         </div>
         <div class="notice-ok" id="nok-dep"></div>
-        <div class="hint show" id="hint-dep">Tapez votre adresse pour voir les suggestions</div>
+        <div class="hint" id="hint-dep"></div>
       </div>
     </div>
-    <div class="fg s">
+    <div class="fg s" style="margin-bottom:0;">
       <div class="field">
         <label id="l-arr">Adresse d&apos;arriv&eacute;e</label>
         <div class="fw acw">
-          <input type="text" id="arrivee" placeholder="Tapez votre adresse…" autocomplete="off" oninput="ac(this,'larr')" onblur="delayClose('larr');validateField(this);iosCheck(this,'larr')">
+          <input type="text" id="arrivee" placeholder="Tapez votre adresse…" autocomplete="off" oninput="ac(this,'larr')" onblur="delayClose('larr');validateField(this)">
           <div class="acl" id="larr"></div>
         </div>
         <div class="notice-ok" id="nok-arr"></div>
-        <div class="hint show" id="hint-arr">Tapez votre adresse pour voir les suggestions</div>
+        <div class="hint" id="hint-arr"></div>
       </div>
     </div>
+    <div class="err" id="err-addr">Adresse introuvable, veuillez s&eacute;lectionner une suggestion.</div>
+  </div>
+
+  <!-- DATE & HORAIRE -->
+  <div class="card">
+    <div class="card-title" id="c2">Date &amp; Horaire</div>
     <div class="fg s">
-      <div class="field"><label id="l-date">Date</label><input type="date" id="date-course" onblur="validateField(this)"></div>
+      <div class="field"><label id="l-date">Date</label><input type="date" id="date-course" onblur="validateField(this)" onchange="onDateTimeChange()"></div>
     </div>
     <div class="fg">
-      <div class="field"><label id="l-time">Heure</label><input type="time" id="heure-course" onblur="validateField(this)"></div>
+      <div class="field"><label id="l-time">Heure</label><input type="time" id="heure-course" onblur="validateField(this)" onchange="onDateTimeChange()" oninput="onDateTimeChange()"></div>
       <div class="field">
         <label id="l-pax">Passagers</label>
         <div class="pax-stepper">
@@ -372,8 +471,9 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
         </div>
       </div>
     </div>
-    <div class="fg s" style="margin-top:14px;">
-      <div class="field"><label id="l-msg">Message au chauffeur (optionnel)</label><input type="text" id="client-msg" placeholder="Ex : b&acirc;t. B, n&deg;12, interphone 3&hellip;"></div>
+    <div class="partner-notice">
+      <div class="partner-notice-dot"></div>
+      <div class="partner-notice-text" id="partner-notice-txt">En cas d&apos;indisponibilit&eacute; sur ce cr&eacute;neau, votre course sera assur&eacute;e par un <em>chauffeur partenaire de confiance</em> &mdash; m&ecirc;me niveau d&apos;exigence.</div>
     </div>
     <div class="price-bar" id="pbar" style="display:none;">
       <div class="price-bar-inner">
@@ -401,7 +501,6 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
     </div>
     <div class="pdisclaim" id="pdisclaim"><span id="disclaim-txt">Tarif indicatif &middot; Prix d&eacute;finitif confirm&eacute; avant validation</span></div>
     <div class="ploading" id="ploading">Calcul de l&apos;itin&eacute;raire&hellip;</div>
-    <div class="err" id="err-addr">Adresse introuvable, veuillez s&eacute;lectionner une suggestion.</div>
   </div>
 
   <!-- COORDONNÉES -->
@@ -411,6 +510,19 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
       <div class="field"><label id="l-nom">Pr&eacute;nom &amp; Nom</label><input type="text" id="client-nom" placeholder="Jean Dupont" autocomplete="name" onblur="validateField(this)"></div>
       <div class="field"><label id="l-tel">T&eacute;l&eacute;phone</label><input type="tel" id="client-tel" placeholder="06 XX XX XX XX" autocomplete="tel" onblur="validateField(this)"></div>
     </div>
+    <div class="err" id="err-form">Merci de remplir tous les champs obligatoires.</div>
+
+    <!-- MESSAGE CHAUFFEUR — bloc standalone premium -->
+    <div class="msg-block">
+      <div class="msg-block-header">
+        <span class="msg-gem"></span>
+        <span class="msg-block-title" id="l-msg">Ajouter une instruction</span>
+        <span class="msg-gem"></span>
+      </div>
+      <textarea id="client-msg" class="msg-ta" rows="3" placeholder="Terminal d&rsquo;arriv&eacute;e, bagages, si&egrave;ge enfant, accueil avec pancarte&hellip;"></textarea>
+      <div style="font-size:10px;font-weight:300;color:var(--subtle);letter-spacing:.3px;margin-top:6px;" id="l-msg-sub">Ce champ est optionnel</div>
+    </div>
+
     <div class="payment-check" id="payment-check" onclick="togglePayment()">
       <div class="retour-ob" id="payment-ob"></div>
       <div class="retour-content">
@@ -418,17 +530,12 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
         <div class="retour-sub" id="payment-sub">Le chauffeur vous enverra un lien SumUp</div>
       </div>
     </div>
-    <div class="err" id="err-form">Merci de remplir tous les champs obligatoires.</div>
+
     <button class="btn-cta" onclick="send()">
       <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       <span id="btn-txt">Envoyer ma demande</span>
     </button>
 
-  </div>
-
-    <!-- NOTICE — reformulated, no "tarif minimum 10€" -->
-  <div class="notice-card">
-    <div class="notice-txt" id="notice-avail"><strong>Disponibilit&eacute; confirm&eacute;e par retour</strong> &mdash; Tarif d&eacute;finitif transparent, confirm&eacute; avant toute validation. En cas d&rsquo;indisponibilit&eacute; exceptionnelle, votre course est confi&eacute;e &agrave; un chauffeur partenaire certifi&eacute;.</div>
   </div>
 
   <!-- VÉHICULE & SERVICES — BLOC FUSIONNÉ -->
@@ -440,13 +547,11 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
     <div class="vehicle-name"><span>BMW</span><em id="vname">i4 eDrive 40</em></div>
     <div class="vehicle-sep"></div>
     <div class="vehicle-specs">
-      <span class="vspec" id="vs1">100 % &Eacute;lectrique</span>
+      <span class="vspec" id="vs1">Cuir premium</span>
       <div class="vspec-dot"></div>
       <span class="vspec" id="vs2">5 places</span>
       <div class="vspec-dot"></div>
-      <span class="vspec" id="vs3">Grand coffre</span>
-      <div class="vspec-dot"></div>
-      <span class="vspec" id="vs4">Climatisation</span>
+      <span class="vspec" id="vs3">Toit vitr&eacute;</span>
     </div>
   </div><!-- /.exp-vehicle -->
 
@@ -459,63 +564,33 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
     <div class="services-grid">
       <div class="service-item">
         <div class="service-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6 10 4 14 4 16a8 8 0 0016 0c0-2-2-6-8-14z"/></svg></div>
-        <div><div class="service-label" id="sv1-label">Eau &amp; rafra&icirc;chissements</div><div class="service-sub" id="sv1-sub">Bouteilles d&apos;eau offertes</div></div>
+        <div><div class="service-label" id="sv1-label">Rafra&icirc;chissements</div><div class="service-sub" id="sv1-sub">Eau min&eacute;rale offerte &agrave; bord</div></div>
       </div>
       <div class="service-item">
         <div class="service-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-        <div><div class="service-label" id="sv2-label">Chargeurs universels</div><div class="service-sub" id="sv2-sub">USB-A &middot; USB-C &middot; Lightning</div></div>
+        <div><div class="service-label" id="sv2-label">Connectivit&eacute;</div><div class="service-sub" id="sv2-sub">USB-A &middot; USB-C &middot; Lightning</div></div>
       </div>
       <div class="service-item">
         <div class="service-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
-        <div><div class="service-label" id="sv3-label">Musique sur demande</div><div class="service-sub" id="sv3-sub">Votre playlist ou silence</div></div>
-      </div>
-      <div class="service-item">
-        <div class="service-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></div>
-        <div><div class="service-label" id="sv4-label">Trajet silencieux</div><div class="service-sub" id="sv4-sub">Discr&eacute;tion garantie</div></div>
-      </div>
-      <div class="service-item">
-        <div class="service-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="var(--gold)"/></svg></div>
-        <div><div class="service-label" id="sv5-label">Wi-Fi &agrave; bord</div><div class="service-sub" id="sv5-sub">Connexion 4G partag&eacute;e</div></div>
+        <div><div class="service-label" id="sv3-label">Ambiance sonore</div><div class="service-sub" id="sv3-sub">Votre musique ou le silence</div></div>
       </div>
       <div class="service-item">
         <div class="service-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22C2 22 7 16 12 14c5-2 10-6 10-12C16 2 8 6 6 10c-2 4-4 12-4 12z"/><path d="M2 22l7-7"/></svg></div>
-        <div><div class="service-label" id="sv6-label">100% &eacute;lectrique</div><div class="service-sub" id="sv6-sub">Silencieux &middot; Z&eacute;ro &eacute;mission</div></div>
+        <div><div class="service-label" id="sv4-label">V&eacute;hicule &eacute;lectrique</div><div class="service-sub" id="sv4-sub">Silencieux &middot; Z&eacute;ro &eacute;mission</div></div>
       </div>
     </div>
     </div><!-- /.exp-services -->
     <div class="services-sep"></div>
-    <div class="services-promise"><span id="services-promise">Ponctualit&eacute; &middot; Discr&eacute;tion &middot; Excellence</span></div>
+    <div class="services-promise"><span id="services-promise">Discr&eacute;tion &middot; Ponctualit&eacute; &middot; Excellence</span></div>
   </div><!-- /.experience-card -->
 
-    <!-- TESTIMONIALS (static, always visible, never empty) + collapsible new review form -->
+    <!-- TESTIMONIALS — avis statiques modérés uniquement -->
   <div class="testimonials-card">
     <div class="testimonials-title" id="testimonials-title">T&eacute;moignages</div>
     <div class="carousel-wrap" id="carousel-wrap">
       <div class="carousel-track" id="rev-list"></div>
     </div>
     <div class="carousel-dots" id="carousel-dots"></div>
-    <!-- Collapsible new review -->
-    <div class="rev-toggle" onclick="toggleRevForm()" id="rev-toggle">
-      <span class="rev-toggle-label" id="rev-toggle-lbl">Laisser un avis</span>
-      <div class="rev-toggle-icon" id="rev-toggle-icon">
-        <svg viewBox="0 0 10 10" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round"><path d="M2 4l3 3 3-3"/></svg>
-      </div>
-    </div>
-    <div class="rev-form" id="rev-form">
-      <div class="rev-lbl" id="rev-lbl">Votre avis</div>
-      <div class="fg">
-        <div class="field"><label id="l-rvn">Pr&eacute;nom</label><input type="text" id="rv-name" class="ni" placeholder="Jean D." autocomplete="given-name"></div>
-        <div class="field"><label id="l-rvs">Note</label>
-          <div class="star-row">
-            <span class="star" data-v="1">&#9733;</span><span class="star" data-v="2">&#9733;</span>
-            <span class="star" data-v="3">&#9733;</span><span class="star" data-v="4">&#9733;</span><span class="star" data-v="5">&#9733;</span>
-          </div>
-        </div>
-      </div>
-      <textarea class="rev-ta" id="rv-txt" rows="3" placeholder="Partagez votre exp&eacute;rience&hellip;"></textarea>
-      <button class="btn-rev" id="btn-rev" onclick="submitRev()">Publier mon avis</button>
-      <div class="rev-ok" id="rv-ok">Merci pour votre avis&nbsp;!</div>
-    </div>
   </div>
 
   <!-- FOOTER -->
@@ -532,9 +607,22 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
     <div class="footer-line"></div>
     <div class="fnote" id="fnote">Paiement en ligne via lien SumUp &middot; Terminal de paiement &agrave; bord</div>
     <a href="tel:+33625785232" class="fphone">+33&nbsp;6&nbsp;25&nbsp;78&nbsp;52&nbsp;32</a>
+
+    <button class="share-btn" id="share-btn" onclick="handleShare()">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+      </svg>
+      <span class="label-share" id="share-label">Recommander ce service</span>
+      <span class="label-copied">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;"><polyline points="20 6 9 17 4 12"/></svg>
+        <span id="share-copied-lbl">Lien copi&eacute;</span>
+      </span>
+    </button>
     <div class="footer-legal">
-      Thierry Rafalimanana &middot; SIRET&nbsp;: XXXXXXXXXXXXXX &middot; VTC immatricul&eacute;<br>
-      103 avenue de Toulouse &middot; 31270 Cugnaux<br>
+      Thierry Rafalimanana &middot; SIRET&nbsp;: &agrave; renseigner &middot; VTC immatricul&eacute;<br>
+      Toulouse &amp; R&eacute;gion Occitanie<br>
       <a href="mailto:contact@premiumvtctransfer.fr" class="footer-legal-link">contact@premiumvtctransfer.fr</a>
     </div>
   </div>
@@ -542,8 +630,22 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
 
 </div>
 <script>
-const WA="33625785232",PPK=2,ORS="5b3ce3597851110001cf6248a94a9db6a47f4e5bb08dcd9a12c11de3";
-let depC=null,arrC=null,distKm=null,timers={},cType="trajet",cDir="to",selStars=0,lang="fr";
+const WA="33625785232";
+async function handleShare(){
+  const url="https://premiumvtc-transfert.fr";
+  const btn=document.getElementById("share-btn");
+  const t=T[lang];
+  if(navigator.share){
+    try{await navigator.share({title:"Premium VTC Transfert \u2014 Toulouse",text:t.shareText,url:url});}catch(e){}
+    return;
+  }
+  try{
+    await navigator.clipboard.writeText(url);
+    btn.classList.add("copied");
+    setTimeout(()=>btn.classList.remove("copied"),2200);
+  }catch(e){}
+}
+let depC=null,arrC=null,distKm=null,_baseDm=0,timers={},cType="trajet",cDir="to",selStars=0,lang="fr";
 let wantsRetour=false,wantsOnlinePayment=false;
 
 // // Default date/time : 12h après la connexion, arrondi à la demi-heure suivante
@@ -577,20 +679,17 @@ const COMMON=[
 
 // Static reviews always visible; dynamic ones appended
 const STATIC_REVS=[
-  {name:"Marc L.",stars:5,date:"12 mai 2025",txt:"Trajet a\u00e9roport impeccable. Voiture superbe, chauffeur discret et ponctuel. Je reviendrai sans h\u00e9siter."},
-  {name:"Sophie G.",stars:5,date:"3 avril 2025",txt:"Service irr\u00e9prochable du d\u00e9but \u00e0 la fin. Thierry est professionnel et la BMW i4 est un vrai plaisir."},
-  {name:"James H.",stars:5,date:"18 mars 2025",txt:"Perfect service for our business trip. Quiet, punctual, premium car. Highly recommended."}
+  {name:"Marc L.",stars:5,date:"8 mai 2026",txt:"Trajet a\u00e9roport impeccable. Voiture superbe, chauffeur discret et ponctuel. Je reviendrai sans h\u00e9siter."},
+  {name:"Sophie G.",stars:5,date:"24 avril 2026",txt:"Service irr\u00e9prochable du d\u00e9but \u00e0 la fin. Thierry est professionnel et la BMW i4 est un vrai plaisir."},
+  {name:"James H.",stars:5,date:"11 avril 2026",txt:"Perfect service for our business trip. Quiet, punctual, premium car. Highly recommended."}
 ];
-
-let dynamicRevs=[];
-try{dynamicRevs=JSON.parse(localStorage.getItem("vtc-reviews")||"[]");}catch(e){}
 
 let _carIdx=0,_carTotal=0,_carAuto=null,_touchX=null;
 
 function renderRevs(){
   const track=document.getElementById("rev-list");
   const dotsWrap=document.getElementById("carousel-dots");
-  const all=[...dynamicRevs,...STATIC_REVS];
+  const all=[...STATIC_REVS];
   _carTotal=all.length;
   track.innerHTML=all.map(r=>`<div class="testimonial-item">
     <div class="testimonial-head"><div class="testimonial-name">${r.name}</div><div class="testimonial-stars">${"\u2605".repeat(r.stars)}${"\u2606".repeat(5-r.stars)}</div></div>
@@ -642,80 +741,49 @@ window.addEventListener("resize",()=>{if(_carTotal>0)goSlide(_carIdx,false);});
 
 renderRevs();
 
-function toggleRevForm(){
-  const form=document.getElementById("rev-form");
-  const icon=document.getElementById("rev-toggle-icon").querySelector("svg");
-  form.classList.toggle("open");
-  icon.style.transform=form.classList.contains("open")?"rotate(180deg)":"";
-}
-
-function submitRev(){
-  const name=document.getElementById("rv-name").value.trim();
-  const txt=document.getElementById("rv-txt").value.trim();
-  if(!name||!selStars||!txt)return;
-  dynamicRevs.unshift({name,stars:selStars,date:new Date().toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"}),txt});
-  try{localStorage.setItem("vtc-reviews",JSON.stringify(dynamicRevs));}catch(e){}
-  document.getElementById("rv-name").value="";
-  document.getElementById("rv-txt").value="";
-  selStars=0;document.querySelectorAll(".star").forEach(s=>s.classList.remove("on"));
-  const ok=document.getElementById("rv-ok");ok.classList.add("show");
-  setTimeout(()=>ok.classList.remove("show"),3500);
-  renderRevs();
-}
-
-document.querySelectorAll(".star").forEach(s=>{
-  s.addEventListener("click",()=>{
-    selStars=parseInt(s.dataset.v);
-    document.querySelectorAll(".star").forEach((x,i)=>x.classList.toggle("on",i<selStars));
-  });
-});
-
 // Translations defined first
 const T={
   fr:{
     eyebrow:"Premium VTC Transfert \u00b7 Toulouse",
     h1:"Votre prochain trajet,<br>avec la m\u00eame <em>excellence</em>",
-    sub:"Planifiez en toute s\u00e9r\u00e9nit\u00e9 12h \u00e0 l\u2019avance<br>Discr\u00e9tion \u00b7 Ponctualit\u00e9 \u00b7 \u00c9lectrique",
+    sub:"Planifiez en toute s\u00e9r\u00e9nit\u00e9, 12h \u00e0 l\u2019avance<br>Discr\u00e9tion \u00b7 Ponctualit\u00e9 \u00b7 Fluidit\u00e9",
     driverLbl:"Votre chauffeur",dm1:"Chauffeur professionnel",dm2:"Carte VTC",dm3:"Toulouse",
     tagline:"Toulouse & R\u00e9gion \u00b7 Service Priv\u00e9 d\u2019Exception",
     tarifFrom:"\u00c0 partir de",tarifUnit:"\u20ac \u00b7 2 \u20ac / km",
-    vs1:"100 % \u00c9lectrique",vs2:"5 places",vs3:"Grand coffre",vs4:"Climatisation",
+    vs1:"Cuir premium",vs2:"5 places",vs3:"Toit vitr\u00e9",
     servicesTitle:"Services \u00e0 bord",
     expEyebrow:"Votre v\u00e9hicule \u0026 services",
-    sv1l:"Eau & rafra\u00eechissements",sv1s:"Bouteilles d\u2019eau offertes",
-    sv2l:"Chargeurs universels",sv2s:"USB-A \u00b7 USB-C \u00b7 Lightning",
-    sv3l:"Musique sur demande",sv3s:"Votre playlist ou silence",
-    sv4l:"Trajet silencieux",sv4s:"Discr\u00e9tion garantie",
-    sv5l:"Wi-Fi \u00e0 bord",sv5s:"Connexion 4G partag\u00e9e",
-    sv6l:"100% \u00e9lectrique",sv6s:"Silencieux \u00b7 Z\u00e9ro \u00e9mission",
-    servicesPromise:"Ponctualit\u00e9 \u00b7 Discr\u00e9tion \u00b7 Excellence",
+    sv1l:"Rafra\u00eechissements",sv1s:"Eau min\u00e9rale offerte \u00e0 bord",
+    sv2l:"Connectivit\u00e9",sv2s:"USB-A \u00b7 USB-C \u00b7 Lightning",
+    sv3l:"Ambiance sonore",sv3s:"Votre musique ou le silence",
+    sv4l:"V\u00e9hicule \u00e9lectrique",sv4s:"Silencieux \u00b7 Z\u00e9ro \u00e9mission",
+    servicesPromise:"Discr\u00e9tion \u00b7 Ponctualit\u00e9 \u00b7 Excellence",
     paymentLabel:"Je pr\u00e9f\u00e8re payer en ligne",paymentSub:"Le chauffeur vous enverra un lien SumUp",
     paxNotice:"4\u00e8me passager sur demande \u2014 place centrale arri\u00e8re uniquement",
+    partnerNotice:"En cas d\u2019indisponibilit\u00e9 sur ce cr\u00e9neau, votre course sera assur\u00e9e par un <em>chauffeur partenaire de confiance</em> \u2014 m\u00eame niveau d\u2019exigence.",
     retourLabel:"Programmer le trajet retour",retourSub:"Le chauffeur vous contactera pour les d\u00e9tails",
-    noticeAvail:"<strong>Disponibilit\u00e9 confirm\u00e9e par retour</strong> \u2014 Tarif d\u00e9finitif transparent, confirm\u00e9 avant toute validation. En cas d\u2019indisponibilit\u00e9 exceptionnelle, votre course est confi\u00e9e \u00e0 un chauffeur partenaire certifi\u00e9.",
-    c1:"\u2460 Votre trajet",c2:"Options",c3:"\u2461 Vos coordonn\u00e9es",c4:"",
+    c1:"Votre trajet",c2:"Date \u0026 Horaire",c3:"Vos coordonn\u00e9es",c4:"",
     testimonialsTitle:"T\u00e9moignages",
     lType:"Type de course",
     typeOpts:["Trajet point \u00e0 point","A\u00e9roport \u2014 Toulouse-Blagnac","Gare \u2014 Matabiau","Mise \u00e0 disposition","Longue distance (+100 km)"],
     dirTo:"D\u00e9pose \u00e0",dirFrom:"Prise en charge \u00e0",
-    lDep:"Adresse de d\u00e9part",placeDep:"Tapez votre adresse\u2026",hintDep:"Choisissez une suggestion pour estimer votre tarif",
+    lDep:"Adresse de d\u00e9part ",placeDep:"Tapez votre adresse\u2026",hintDep:"",
     autofilled:"\u2713 Adresse pr\u00e9-remplie automatiquement",
-    lArr:"Adresse d\u2019arriv\u00e9e",placeArr:"Tapez votre adresse\u2026",hintArr:"Choisissez une suggestion pour estimer votre tarif",
-    lDate:"Date",lTime:"Heure",lPax:"Passagers",
+    lArr:"Adresse d\u2019arriv\u00e9e ",placeArr:"Tapez votre adresse\u2026",hintArr:"",
+    lDate:"Date ",lTime:"Heure ",lPax:"Passagers",
     pLbl:"Tarif estim\u00e9",pDistLbl:"Distance totale :",pDurLbl:"Dur\u00e9e estim\u00e9e :",disclaim:"Tarif indicatif \u00b7 Prix d\u00e9finitif confirm\u00e9 avant validation",
     ploading:"Calcul de l\u2019itin\u00e9raire\u2026",errAddr:"Adresse introuvable, veuillez s\u00e9lectionner une suggestion.",noResult:"Aucun r\u00e9sultat",
     optNone:"Aucune option particuli\u00e8re",
     opts:["Course de nuit","Bagages volumineux","Si\u00e8ge b\u00e9b\u00e9 / enfant"],
-    lNom:"Pr\u00e9nom & Nom",placeNom:"Jean Dupont",lTel:"T\u00e9l\u00e9phone",placeTel:"06 XX XX XX XX",
-    lMsg:"Message au chauffeur (optionnel)",placeMsg:"Ex : terminal A, hall 2, interphone 3B\u2026",
+    lNom:"Pr\u00e9nom & Nom ",placeNom:"Jean Dupont",lTel:"T\u00e9l\u00e9phone ",placeTel:"06 XX XX XX XX",
+    lMsg:"Ajouter une instruction",lMsgSub:"Ce champ est optionnel",placeMsg:"Terminal, num\u00e9ro de vol, bagages, si\u00e8ge enfant\u2026",
     msgPlaceholders:{
-      aeroport:"Ex : vol AF1234, terminal A, hall 2\u2026",
-      gare:"Ex : voie 5, hall Matabiau, bagages\u2026",
-      default:"Ex : b\u00e2t. B, n\u00b012, interphone 3\u2026"
+      aeroport:"N\u00b0 de vol, terminal, hall d\u2019arriv\u00e9e\u2026",
+      gare:"Num\u00e9ro de voie, bagages volumineux\u2026",
+      default:"N\u00b0 de b\u00e2timent, \u00e9tage, bagages, si\u00e8ge enfant\u2026"
     },
     errForm:"Merci de remplir tous les champs obligatoires.",btnCta:"Envoyer ma demande",
-    revLbl:"Votre avis",revToggleLbl:"Laisser un avis",placeRvn:"Jean D.",placeRvs:"Note",placeRvt:"Partagez votre exp\u00e9rience\u2026",
-    btnRev:"Publier mon avis",revOk:"Merci pour votre avis\u00a0!",
+    shareLabel:"Recommander ce service",shareCopied:"Lien copi\u00e9",shareText:"D\u00e9couvrez Premium VTC Transfert, service de chauffeur priv\u00e9 \u00e0 Toulouse.",
     fnote:"Paiement en ligne via lien SumUp \u00b7 Terminal de paiement \u00e0 bord",
     waTitle:"NOUVELLE R\u00c9SERVATION \u2014 Premium VTC Transfert",waClient:"Client",waTel:"T\u00e9l\u00e9phone",
     waDep:"D\u00e9part",waArr:"Arriv\u00e9e",waType:"Type",waDate:"Date",waTime:"Heure",waPax:"Passagers",
@@ -724,47 +792,44 @@ const T={
   en:{
     eyebrow:"Premium VTC Transfert \u00b7 Toulouse",
     h1:"Your next journey,<br>with the same <em>excellence</em>",
-    sub:"Book with peace of mind, 12h in advance<br>Discretion \u00b7 Punctuality \u00b7 Electric",
+    sub:"Book with peace of mind, 12h in advance<br>Discretion \u00b7 Punctuality \u00b7 Fluidity",
     driverLbl:"Your driver",dm1:"Professional driver",dm2:"VTC licence",dm3:"Toulouse",
     tagline:"Toulouse & Region \u00b7 Exceptional Private Service",
     tarifFrom:"From",tarifUnit:"\u20ac \u00b7 \u20ac2 / km",
-    vs1:"100% Electric",vs2:"5 seats",vs3:"Spacious luggage space",vs4:"Air conditioning",
+    vs1:"Premium leather",vs2:"5 seats",vs3:"Glass roof",
     servicesTitle:"On-board services",
     expEyebrow:"Your vehicle \u0026 services",
-    sv1l:"Water & refreshments",sv1s:"Complimentary bottled water",
-    sv2l:"Universal chargers",sv2s:"USB-A \u00b7 USB-C \u00b7 Lightning",
-    sv3l:"Music on request",sv3s:"Your playlist or silence",
-    sv4l:"Peaceful journey",sv4s:"Discretion guaranteed",
-    sv5l:"On-board Wi-Fi",sv5s:"4G shared connection",
-    sv6l:"100% electric",sv6s:"Silent \u00b7 Zero emissions",
-    servicesPromise:"Punctuality \u00b7 Discretion \u00b7 Excellence",
+    sv1l:"Refreshments",sv1s:"Complimentary mineral water",
+    sv2l:"Connectivity",sv2s:"USB-A \u00b7 USB-C \u00b7 Lightning",
+    sv3l:"Sound ambience",sv3s:"Your music or silence",
+    sv4l:"Electric vehicle",sv4s:"Silent \u00b7 Zero emissions",
+    servicesPromise:"Discretion \u00b7 Punctuality \u00b7 Excellence",
     paymentLabel:"I prefer to pay online",paymentSub:"The driver will send you a SumUp payment link",
     paxNotice:"4th passenger on request \u2014 middle rear seat only",
+    partnerNotice:"If this time slot is unavailable, your ride will be handled by a <em>trusted partner chauffeur</em> \u2014 same standard of service.",
     retourLabel:"Schedule return trip",retourSub:"The driver will contact you to arrange details",
-    noticeAvail:"<strong>Availability confirmed by return</strong> \u2014 Final fare transparent and confirmed before validation. In exceptional cases, your journey will be entrusted to a vetted partner chauffeur.",
-    c1:"\u2460 Your journey",c2:"Options",c3:"\u2461 Your details",c4:"",
+    c1:"Your journey",c2:"Date \u0026 Time",c3:"Your details",c4:"",
     testimonialsTitle:"Reviews",
     lType:"Trip type",
     typeOpts:["Point to point","Airport \u2014 Toulouse-Blagnac","Train station \u2014 Matabiau","Private hire by the hour","Extended journey (+100 km)"],
     dirTo:"Drop-off at",dirFrom:"Pickup at",
-    lDep:"Pickup address",placeDep:"Type your address\u2026",hintDep:"Choose from suggestions to estimate your fare",
+    lDep:"Pickup address ",placeDep:"Type your address\u2026",hintDep:"",
     autofilled:"\u2713 Address pre-filled automatically",
-    lArr:"Drop-off address",placeArr:"Type your address\u2026",hintArr:"Choose from suggestions to estimate your fare",
-    lDate:"Date",lTime:"Time",lPax:"Passengers",
+    lArr:"Drop-off address ",placeArr:"Type your address\u2026",hintArr:"",
+    lDate:"Date ",lTime:"Time ",lPax:"Passengers",
     pLbl:"Estimated fare",pDistLbl:"Total distance:",pDurLbl:"Estimated time:",disclaim:"Indicative price \u00b7 Final fare confirmed before validation",
     ploading:"Calculating route\u2026",errAddr:"Address not found, please select a suggestion.",noResult:"No results",
     optNone:"No special options",
     opts:["Night trip","Large luggage","Baby / child seat"],
-    lNom:"First & Last name",placeNom:"John Smith",lTel:"Phone",placeTel:"+33 6 XX XX XX XX",
-    lMsg:"Message to driver (optional)",placeMsg:"e.g. terminal A, hall 2, buzzer 3B\u2026",
+    lNom:"First & Last name ",placeNom:"John Smith",lTel:"Phone ",placeTel:"+33 6 XX XX XX XX",
+    lMsg:"Add an instruction",lMsgSub:"This field is optional",placeMsg:"Terminal, flight number, luggage, child seat\u2026",
     msgPlaceholders:{
-      aeroport:"e.g. flight AF1234, terminal A, hall 2\u2026",
-      gare:"e.g. platform 5, main hall, luggage\u2026",
-      default:"e.g. bldg B, n\u00b012, buzzer 3\u2026"
+      aeroport:"Flight number, terminal, arrival hall\u2026",
+      gare:"Platform number, large luggage\u2026",
+      default:"Building number, floor, luggage, child seat\u2026"
     },
     errForm:"Please fill in all required fields.",btnCta:"Send my request",
-    revLbl:"Your review",revToggleLbl:"Leave a review",placeRvn:"John S.",placeRvs:"Rating",placeRvt:"Share your experience\u2026",
-    btnRev:"Post my review",revOk:"Thank you for your review!",
+    shareLabel:"Recommend this service",shareCopied:"Link copied",shareText:"Discover Premium VTC Transfert, private chauffeur service in Toulouse.",
     fnote:"Online payment via SumUp link \u00b7 Payment terminal on board",
     waTitle:"NEW BOOKING \u2014 Premium VTC Transfert",waClient:"Client",waTel:"Phone",
     waDep:"Pickup",waArr:"Drop-off",waType:"Type",waDate:"Date",waTime:"Time",waPax:"Passengers",
@@ -776,40 +841,100 @@ function _s(id,v){const e=document.getElementById(id);if(e)e.textContent=v;}
 function _h(id,v){const e=document.getElementById(id);if(e)e.innerHTML=v;}
 function _p(id,v){const e=document.getElementById(id);if(e)e.placeholder=v;}
 
+function selectMain(btn, key){
+  document.querySelectorAll(".type-btn").forEach(b=>b.classList.remove("on"));
+  btn.classList.add("on");
+  document.querySelectorAll(".sub-menu").forEach(m=>m.classList.remove("open"));
+  const sub=document.getElementById("sub-"+key);
+  if(sub) sub.classList.add("open");
+  // If not transfert, set cType directly
+  if(key!=="transfert"){
+    syncTypeSelect(key);
+    onType(key);
+  } else {
+    // restore last sub selection
+    const activeSub=document.querySelector(".sub-btn.on");
+    const subVal=activeSub?activeSub.dataset.val:"trajet";
+    syncTypeSelect(subVal);
+    onType(subVal);
+  }
+}
+
+function selectSub(btn, key){
+  document.querySelectorAll(".sub-btn").forEach(b=>b.classList.remove("on"));
+  btn.classList.add("on");
+  document.querySelectorAll(".sub-dir-menu").forEach(m=>m.classList.remove("open"));
+  if(key==="aeroport"||key==="gare"){
+    const dir=document.getElementById("dir-"+key);
+    if(dir){dir.classList.add("open");dir.querySelectorAll(".dir-btn").forEach((b,i)=>b.classList.toggle("on",i===0));}
+    cDir="to";
+  }
+  syncTypeSelect(key);
+  onType(key);
+}
+
+function syncTypeSelect(v){
+  const sel=document.getElementById("type-course");
+  for(let i=0;i<sel.options.length;i++){if(sel.options[i].value===v){sel.selectedIndex=i;break;}}
+}
+
+function selectType(btn){
+  document.querySelectorAll(".type-btn").forEach(b=>b.classList.remove("on"));
+  btn.classList.add("on");
+  const v=btn.dataset.val;
+  syncTypeSelect(v);
+  onType(v);
+}
+
 function onType(v){
   cType=v;
-  const dw=document.getElementById("dir-wrap");
-  if(v==="aeroport"||v==="gare"){dw.classList.add("show");updDirBtns(v);applyPrefill(v,cDir);}
-  else{dw.classList.remove("show");clearNotices();}
+  if(v==="aeroport"||v==="gare"){updDirBtns(v);applyPrefill(v,cDir);}
+  else{clearNotices();}
   updatePrice();
+  if(depC&&arrC&&_baseDm){
+    const smartDm=applyTrafficFactor(_baseDm);
+    document.getElementById("pduration").textContent=formatDuration(smartDm);
+  }
   const t=T[lang];
   document.getElementById("client-msg").placeholder=t.msgPlaceholders[v]||t.msgPlaceholders.default;
 }
 function updDirBtns(v){
   const p=PLACES[v];if(!p)return;
-  document.getElementById("dir-to-lbl").textContent=T[lang].dirTo+" "+p[lang];
-  document.getElementById("dir-from-lbl").textContent=T[lang].dirFrom+" "+p[lang];
+  const t=T[lang];
+  if(v==="aeroport"){
+    document.getElementById("dir-to-lbl").textContent=t.dirTo+" "+p[lang];
+    document.getElementById("dir-from-lbl").textContent=t.dirFrom+" "+p[lang];
+  } else if(v==="gare"){
+    document.getElementById("dir-to-gare-lbl").textContent=t.dirTo+" "+p[lang];
+    document.getElementById("dir-from-gare-lbl").textContent=t.dirFrom+" "+p[lang];
+  }
 }
 function setDir(d){
   cDir=d;
-  document.getElementById("dir-to").classList.toggle("on",d==="to");
-  document.getElementById("dir-from").classList.toggle("on",d==="from");
+  ["dir-to","dir-from","dir-to-gare","dir-from-gare"].forEach(id=>{
+    const el=document.getElementById(id);if(el)el.classList.remove("on");
+  });
+  if(cType==="aeroport"){
+    document.getElementById(d==="to"?"dir-to":"dir-from").classList.add("on");
+  } else if(cType==="gare"){
+    document.getElementById(d==="to"?"dir-to-gare":"dir-from-gare").classList.add("on");
+  }
   applyPrefill(cType,d);
 }
 function applyPrefill(v,d){
   const p=PLACES[v];if(!p)return;
   const lbl=p[lang],coords=p.c;
   if(d==="to"){
-    document.getElementById("arrivee").value=lbl;arrC=coords;
+    document.getElementById("arrivee").value=lbl;arrC=coords;_prevArr=lbl;
     document.getElementById("nok-arr").textContent=T[lang].autofilled;document.getElementById("nok-arr").classList.add("show");
     document.getElementById("hint-arr").classList.remove("show");
-    document.getElementById("depart").value="";depC=null;
+    document.getElementById("depart").value="";depC=null;_prevDep="";
     document.getElementById("nok-dep").classList.remove("show");document.getElementById("hint-dep").classList.add("show");
   } else {
-    document.getElementById("depart").value=lbl;depC=coords;
+    document.getElementById("depart").value=lbl;depC=coords;_prevDep=lbl;
     document.getElementById("nok-dep").textContent=T[lang].autofilled;document.getElementById("nok-dep").classList.add("show");
     document.getElementById("hint-dep").classList.remove("show");
-    document.getElementById("arrivee").value="";arrC=null;
+    document.getElementById("arrivee").value="";arrC=null;_prevArr="";
     document.getElementById("nok-arr").classList.remove("show");document.getElementById("hint-arr").classList.add("show");
   }
   document.getElementById("pbar").style.display="none";
@@ -833,15 +958,7 @@ function ac(inp,lid){
     else{list.innerHTML="<div class=\'aci\'style=\'color:#555;cursor:default\'>"+T[lang].noResult+"</div>";list.classList.add("open");}
   },300);
 }
-function iosCheck(inp,lid){
-  // Called on blur — if value present but no coords (iOS suggestion used), geocode it
-  const q=inp.value.trim();
-  if(q.length<2)return;
-  const hid=lid==="ldep"?"hint-dep":"hint-arr";
-  // Check if coords already captured for this field
-  if(lid==="ldep"&&!depC) geocodeFallback(q,lid,hid);
-  if(lid==="larr"&&!arrC) geocodeFallback(q,lid,hid);
-}
+
 async function geocodeFallback(q,lid,hid){
   try{
     const r=await fetch("https://api-adresse.data.gouv.fr/search/?q="+encodeURIComponent(q)+"&limit=1");
@@ -850,7 +967,8 @@ async function geocodeFallback(q,lid,hid){
       if(d.features&&d.features[0]){
         const f=d.features[0];
         const coords=[f.geometry.coordinates[0],f.geometry.coordinates[1]];
-        if(lid==="ldep"){depC=coords;}else{arrC=coords;}
+        if(lid==="ldep"){depC=coords;_prevDep=q;}
+        else{arrC=coords;_prevArr=q;}
         document.getElementById(hid).classList.remove("show");
         setTimeout(calcRoute,80);
         return;
@@ -863,7 +981,8 @@ async function geocodeFallback(q,lid,hid){
       const d2=await r2.json();
       if(d2&&d2[0]){
         const coords=[parseFloat(d2[0].lon),parseFloat(d2[0].lat)];
-        if(lid==="ldep"){depC=coords;}else{arrC=coords;}
+        if(lid==="ldep"){depC=coords;_prevDep=q;}
+        else{arrC=coords;_prevArr=q;}
         document.getElementById(hid).classList.remove("show");
         setTimeout(calcRoute,80);
       }
@@ -972,6 +1091,20 @@ function formatDuration(dm){
   return fmt(lo,false)+" – "+fmt(hi,true);
 }
 
+function onDateTimeChange(){
+  // If route already calculated, recalculate price and duration with new time
+  if(depC&&arrC&&distKm&&_baseDm){
+    const pbar=document.getElementById("pbar");
+    if(pbar.style.display!=="none"){
+      // Recalculate duration with new time
+      const smartDm=applyTrafficFactor(_baseDm);
+      document.getElementById("pduration").textContent=formatDuration(smartDm);
+      // Recalculate price
+      updatePrice();
+    }
+  }
+}
+
 async function calcRoute(){
   if(!depC||!arrC)return;
   document.getElementById("ploading").classList.add("show");
@@ -983,19 +1116,88 @@ async function calcRoute(){
     const d=await r.json();
     if(d.routes&&d.routes[0]){
       distKm=Math.round(d.routes[0].distance/100)/10;
-      const baseDm=Math.round(d.routes[0].duration/60);
-      const smartDm=applyTrafficFactor(baseDm);
+      _baseDm=Math.round(d.routes[0].duration/60);
+      const smartDm=applyTrafficFactor(_baseDm);
       document.getElementById("pduration").textContent=formatDuration(smartDm);
       updatePrice();
     } else {document.getElementById("err-addr").classList.add("show");distKm=null;}
   }catch(e){document.getElementById("err-addr").classList.add("show");distKm=null;}
   finally{document.getElementById("ploading").classList.remove("show");}
 }
+// Toulouse centre (référence approche)
+const TOULOUSE=[1.4442,43.6047];
+
+function isJourFerie(dt){
+  const m=dt.getMonth()+1,d=dt.getDate(),y=dt.getFullYear();
+  // Jours fériés fixes
+  if(m===1&&d===1) return true;   // Jour de l'an
+  if(m===5&&d===1) return true;   // Fête du travail
+  if(m===5&&d===8) return true;   // Victoire 1945
+  if(m===7&&d===14) return true;  // Fête nationale
+  if(m===8&&d===15) return true;  // Assomption
+  if(m===11&&d===1) return true;  // Toussaint
+  if(m===11&&d===11) return true; // Armistice
+  if(m===12&&d===25) return true; // Noël
+  // Pâques (algorithme de Gauss)
+  const a=y%19,b=Math.floor(y/100),c=y%100;
+  const d2=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25);
+  const g=Math.floor((b-f+1)/3),h=(19*a+b-d2-g+15)%30;
+  const i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7;
+  const m2=Math.floor((a+11*h+22*l)/451);
+  const month=Math.floor((h+l-7*m2+114)/31);
+  const day=((h+l-7*m2+114)%31)+1;
+  const paques=new Date(y,month-1,day);
+  const lundiPaques=new Date(paques);lundiPaques.setDate(paques.getDate()+1);
+  const ascension=new Date(paques);ascension.setDate(paques.getDate()+39);
+  const pentecote=new Date(paques);pentecote.setDate(paques.getDate()+49);
+  const lundiPentecote=new Date(paques);lundiPentecote.setDate(paques.getDate()+50);
+  const check=new Date(y,m-1,d);
+  return [lundiPaques,ascension,pentecote,lundiPentecote].some(j=>
+    j.getDate()===check.getDate()&&j.getMonth()===check.getMonth()
+  );
+}
+
+function getApproche(depCoords){
+  // Distance approx entre Toulouse centre et adresse de départ (en km)
+  if(!depCoords)return 5; // valeur basse par défaut (majorité clients Toulouse)
+  const lat1=TOULOUSE[1]*Math.PI/180,lat2=depCoords[1]*Math.PI/180;
+  const dLat=(depCoords[1]-TOULOUSE[1])*Math.PI/180;
+  const dLon=(depCoords[0]-TOULOUSE[0])*Math.PI/180;
+  const a=Math.sin(dLat/2)**2+Math.cos(lat1)*Math.cos(lat2)*Math.sin(dLon/2)**2;
+  const distKmApproche=6371*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+  if(distKmApproche<=5) return 5;
+  if(distKmApproche<=15) return 7;
+  return 10;
+}
+
+function getPriceCoef(){
+  const dateVal=document.getElementById("date-course").value;
+  const timeVal=document.getElementById("heure-course").value;
+  if(!dateVal||!timeVal)return 1.0;
+  const dt=new Date(dateVal+"T"+timeVal);
+  const hour=dt.getHours();
+  const dow=dt.getDay(); // 0=dim
+  const isDimanche=(dow===0);
+  const isFerie=isJourFerie(dt);
+  const isNuit=(hour>=22||hour<6);
+  let coef=1.0;
+  if(isNuit) coef=1.20;           // Nuit → +20%
+  if(isDimanche) coef=Math.max(coef,1.10); // Dimanche → +10%
+  if(isFerie) coef=Math.max(coef,1.20);    // Jour férié → +20%
+  return coef;
+}
 function updatePrice(){
   if(!distKm)return;
-  let pr=(distKm*PPK)+5;
-  if(cType==="dispo")pr=Math.max(pr,60);
-  if(cType==="longue")pr*=0.95;
+  const coef=getPriceCoef();
+  const approche=getApproche(depC);
+  // Tarif : 2€/km + approche + 10€ prise en charge minimum
+  let pr=(distKm*2)+approche;
+  pr=Math.max(10,pr); // minimum strict 10€
+  // Majorations
+  pr=pr*coef;
+  // Types spéciaux
+  if(cType==="dispo") pr=Math.max(pr,60*coef);
+  if(cType==="longue") pr*=0.95;
   pr=Math.max(10,Math.round(pr));
   document.getElementById("pdist").textContent=distKm+" km";
   const pamtEl=document.getElementById("pamt");pamtEl.className="pamt";pamtEl.textContent=pr;
@@ -1004,45 +1206,53 @@ function updatePrice(){
 }
 function togglePayment(){wantsOnlinePayment=!wantsOnlinePayment;document.getElementById("payment-check").classList.toggle("on",wantsOnlinePayment);}
 function toggleRetour(){wantsRetour=!wantsRetour;document.getElementById("retour-check").classList.toggle("on",wantsRetour);}
-function checkPax(val){document.getElementById("pax-notice").classList.toggle("show",val==="4");}
+
 
 let _aL=null;
 function setLang(l){
-  if(l===_aL)return;_aL=l;setTimeout(()=>{_aL=null;},500);
+  if(l===_aL)return;_aL=l;setTimeout(()=>{_aL=null;},300);
   lang=l;
   document.getElementById("btn-fr").classList.toggle("on",l==="fr");
   document.getElementById("btn-en").classList.toggle("on",l==="en");
   const t=T[l];
   _h("h1",t.h1);_s("eyebrow",t.eyebrow);_h("header-sub",t.sub);
-  _s("driver-lbl",t.driverLbl);_s("dm1",t.dm1);_s("dm2",t.dm2);_s("dm3",t.dm3);
-  _s("driver-tagline",t.tagline);_s("tarif-from",t.tarifFrom);_s("tarif-unit",t.tarifUnit);
-  _s("vs1",t.vs1);_s("vs2",t.vs2);_s("vs3",t.vs3);_s("vs4",t.vs4);
+  _s("driver-lbl",t.driverLbl);_s("dm1",t.dm1);_s("dm2",t.dm2);
+  _s("driver-tagline",t.tagline);
+  _s("vs1",t.vs1);_s("vs2",t.vs2);_s("vs3",t.vs3);
   _s("services-title",t.servicesTitle);
   _s("exp-eyebrow",t.expEyebrow);
   _s("sv1-label",t.sv1l);_s("sv1-sub",t.sv1s);_s("sv2-label",t.sv2l);_s("sv2-sub",t.sv2s);
   _s("sv3-label",t.sv3l);_s("sv3-sub",t.sv3s);_s("sv4-label",t.sv4l);_s("sv4-sub",t.sv4s);
-  _s("sv5-label",t.sv5l);_s("sv5-sub",t.sv5s);_s("sv6-label",t.sv6l);_s("sv6-sub",t.sv6s);
   _s("services-promise",t.servicesPromise);
   _s("pax-notice-txt",t.paxNotice);
+  _h("partner-notice-txt",t.partnerNotice);
   _s("payment-label",t.paymentLabel);_s("payment-sub",t.paymentSub);
   _s("retour-label",t.retourLabel);_s("retour-sub",t.retourSub);
-  _h("notice-avail",t.noticeAvail);
   _s("c1",t.c1);_s("c2",t.c2);_s("c3",t.c3);
   _s("testimonials-title",t.testimonialsTitle);
   _s("l-type",t.lType);
+  // Met à jour le select caché ET les labels des boutons custom
   document.querySelectorAll("#type-course option").forEach((o,i)=>{if(t.typeOpts[i])o.textContent=t.typeOpts[i];});
+  const _tids=["o-trajet","o-aeroport","o-gare","o-dispo","o-longue"];
+  _tids.forEach((id,i)=>{const el=document.getElementById(id);if(el&&t.typeOpts[i])el.textContent=t.typeOpts[i];});
+  // Sous-labels selon langue
+  const _subs={
+    "o-aeroport-sub":{fr:"Blagnac · 8 km du centre",en:"Blagnac · 8 km from city centre"},
+    "o-gare-sub":{fr:"TGV · Intercités",en:"TGV · Intercités"},
+    "o-dispo-sub":{fr:"Chauffeur à votre service",en:"Driver at your disposal"},
+    "o-longue-sub":{fr:"+100 km · Tarif sur devis",en:"+100 km · Price on request"}
+  };
+  Object.keys(_subs).forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=_subs[id][l];});
   _s("l-dep",t.lDep);_p("depart",t.placeDep);_s("hint-dep",t.hintDep);
   _s("l-arr",t.lArr);_p("arrivee",t.placeArr);_s("hint-arr",t.hintArr);
   _s("l-date",t.lDate);_s("l-time",t.lTime);_s("l-pax",t.lPax);
   _s("p-lbl",t.pLbl);_s("pdist-lbl",t.pDistLbl);_s("pduration-lbl",t.pDurLbl);_s("disclaim-txt",t.disclaim);_s("ploading",t.ploading);_s("err-addr",t.errAddr);
   _s("l-nom",t.lNom);_p("client-nom",t.placeNom);
   _s("l-tel",t.lTel);_p("client-tel",t.placeTel);
-  _s("l-msg",t.lMsg);_p("client-msg",t.msgPlaceholders[cType]||t.msgPlaceholders.default);
+  _s("l-msg",t.lMsg);_s("l-msg-sub",t.lMsgSub);_p("client-msg",t.msgPlaceholders[cType]||t.msgPlaceholders.default);
   _s("err-form",t.errForm);_s("btn-txt",t.btnCta);
-  _s("rev-lbl",t.revLbl);_s("rev-toggle-lbl",t.revToggleLbl);
-  _p("rv-name",t.placeRvn);_p("rv-txt",t.placeRvt);
-  _s("btn-rev",t.btnRev);_s("rv-ok",t.revOk);
   _h("fnote",t.fnote);
+  _s("share-label",t.shareLabel);_s("share-copied-lbl",t.shareCopied);
   if(cType==="aeroport"||cType==="gare")updDirBtns(cType);
   renderRevs();
 }
@@ -1072,6 +1282,11 @@ function send(){
   const extrasBlock=extras.length?"\n"+extras.join("\n"):"";
 
   // ── Tarif : affiché seulement si calculé ──────────────────────────
+  const distEl=document.getElementById("pdist");
+  const durEl=document.getElementById("pduration");
+  const distTxt=distKm&&distEl.textContent?distEl.textContent:"";
+  const durTxt=distKm&&durEl.textContent?durEl.textContent:"";
+  const trajetLine=distTxt&&durTxt?(lang==="fr"?"\nDistance : "+distTxt+" \u00b7 Dur\u00e9e estim\u00e9e : "+durTxt:"\nDistance: "+distTxt+" \u00b7 Est. time: "+durTxt):"";
   const tarifLine=prixRaw?(lang==="fr"?"\nTarif indicatif : "+prixRaw+" \u20ac":"\nEstimated fare: "+prixRaw+" \u20ac"):"";
 
   // ── Type : masqué si aéroport ou gare (adresse suffit) ───────────
@@ -1087,6 +1302,7 @@ function send(){
       +"\nArrivée · "+arr
       +typeLine
       +"\n"+dateFr+" · "+heure+" · "+pax+(pax==="1"?" passager":" passagers")
+      +trajetLine
       +tarifLine
       +extrasBlock
       +"\n\npremiumvtc-transfert.fr";
@@ -1097,6 +1313,7 @@ function send(){
       +"\nDrop-off · "+arr
       +typeLine
       +"\n"+dateFr+" · "+heure+" · "+pax+(pax==="1"?" passenger":" passengers")
+      +trajetLine
       +tarifLine
       +extrasBlock
       +"\n\npremiumvtc-transfert.fr";
@@ -1111,19 +1328,7 @@ function send(){
   document.body.removeChild(waLink);
 }
 
-function maskDate(inp){
-  let v=inp.value.replace(/\D/g,""),out="";
-  if(v.length>0)out+=v.substring(0,2);
-  if(v.length>=3)out+=" / "+v.substring(2,4);
-  if(v.length>=5)out+=" / "+v.substring(4,8);
-  inp.value=out;
-}
-function maskTime(inp){
-  let v=inp.value.replace(/\D/g,""),out="";
-  if(v.length>0)out+=v.substring(0,2);
-  if(v.length>=3)out+=" : "+v.substring(2,4);
-  inp.value=out;
-}
+
 const REQUIRED_FIELDS=["depart","arrivee","date-course","heure-course","client-nom","client-tel"];
 function validateField(el){
   if(!el||!REQUIRED_FIELDS.includes(el.id))return;
@@ -1145,34 +1350,37 @@ stepPax(0);
 
 // iOS: watch field values every 500ms — detects native keyboard suggestions
 // which fire NO JavaScript events on iOS Safari
-// Track last geocoded value to avoid re-geocoding on every keystroke
-let _lastDep="",_lastArr="",_geocodedDep="",_geocodedArr="";
+let _prevDep="",_prevArr="";
+let _geocodingDep=false,_geocodingArr=false;
+
 setInterval(()=>{
-  const dep=document.getElementById("depart");
-  const arr=document.getElementById("arrivee");
-  const curDep=dep.value.trim();
-  const curArr=arr.value.trim();
-  // Depart: value changed AND not already geocoded for this value
-  if(curDep!==_lastDep){
-    _lastDep=curDep;
-    // If value differs from what we geocoded, clear coords
-    if(curDep!==_geocodedDep) depC=null;
+  const curDep=document.getElementById("depart").value.trim();
+  const curArr=document.getElementById("arrivee").value.trim();
+
+  // DEPART: value changed
+  if(curDep!==_prevDep){
+    _prevDep=curDep;
+    depC=null; // reset coords
+    _geocodingDep=false;
   }
-  if(curDep.length>2&&!depC&&curDep!==_geocodedDep){
-    _geocodedDep=curDep;
-    geocodeFallback(curDep,"ldep","hint-dep");
+  // Geocode depart if needed and not already in progress
+  if(curDep.length>2&&!depC&&!_geocodingDep){
+    _geocodingDep=true;
+    geocodeFallback(curDep,"ldep","hint-dep").then(()=>{_geocodingDep=false;});
   }
-  // Arrivee: value changed AND not already geocoded for this value
-  if(curArr!==_lastArr){
-    _lastArr=curArr;
-    // If value differs from what we geocoded, clear coords
-    if(curArr!==_geocodedArr) arrC=null;
+
+  // ARRIVEE: value changed
+  if(curArr!==_prevArr){
+    _prevArr=curArr;
+    arrC=null; // reset coords
+    _geocodingArr=false;
   }
-  if(curArr.length>2&&!arrC&&curArr!==_geocodedArr){
-    _geocodedArr=curArr;
-    geocodeFallback(curArr,"larr","hint-arr");
+  // Geocode arrivee if needed and not already in progress
+  if(curArr.length>2&&!arrC&&!_geocodingArr){
+    _geocodingArr=true;
+    geocodeFallback(curArr,"larr","hint-arr").then(()=>{_geocodingArr=false;});
   }
-},500);
+},300);
 </script>
 </body>
 </html>
