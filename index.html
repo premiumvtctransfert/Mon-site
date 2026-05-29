@@ -51,7 +51,7 @@
   "paymentAccepted": "Cash, Credit Card, Online Payment",
   "vehicle": {
     "@type": "Car",
-    "name": "BMW i4 eDrive 40",
+    "name": "BMW i4 Gran Coupé",
     "vehicleTransmission": "Automatique",
     "fuelType": "Électrique"
   },
@@ -63,18 +63,18 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Playfair+Display:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --error:#b04040;--price-empty:#1E1E1E;--dot-inactive:#2a2a2a;
+  --error:#b04040;--price-empty:#0D0D0D;--dot-inactive:#2a2a2a;
   --gold:#C8A96E;--gold-light:#E2C48A;
   --gold-50:rgba(200,169,110,.5);--gold-60:rgba(200,169,110,.6);--gold-80:rgba(200,169,110,.8);
   --gold-dim:rgba(200,169,110,.05);--gold-border:rgba(200,169,110,.08);--gold-border-strong:rgba(200,169,110,.25);
-  --black:#0A0A0A;--dark1:#0A0A0A;--dark2:#161618;
+  --black:#0A0A0A;--dark1:#0A0A0A;--dark2:#121212;
   --white:#F4F1EA;--white-70:rgba(244,241,234,.7);--white-85:rgba(244,241,234,.85);
   --muted:#D1C9BC;--subtle:#8E8E93;
 }
 html,body{margin:0;padding:0;}
 h1,h2,h3{margin:0;padding:0;font-size:inherit;font-weight:inherit;}
-@media screen and (orientation:landscape) and (max-height:500px){
-  body{display:none;}
+@media screen and (orientation:landscape){
+  body > *:not(#orientation-msg){display:none!important;}
   #orientation-msg{display:flex!important;}
 }
 #orientation-msg{display:none;position:fixed;inset:0;background:var(--black);z-index:9999;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:32px;}
@@ -101,7 +101,7 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
 .driver-photo-wrap::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--gold-border-strong);}
 .driver-photo-wrap::after{display:none;}
 .driver-photo{width:96px;height:96px;border-radius:50%;border:none;object-fit:cover;object-position:center top;display:block;position:relative;z-index:1;}
-.driver-photo-fallback{width:96px;height:96px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#2a1f0e 0%,#0A0A0A 100%);align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:36px;font-weight:300;color:var(--gold);flex-shrink:0;position:relative;z-index:1;}
+.driver-photo-fallback{width:96px;height:96px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#2a1f0e 0%,#000000 100%);align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:36px;font-weight:300;color:var(--gold);flex-shrink:0;position:relative;z-index:1;}
 .driver-lbl{font-family:'Playfair Display',serif;font-size:28px;font-weight:300;color:var(--white);text-align:center;letter-spacing:1px;line-height:1.2;margin-bottom:40px;}
 .driver-name{font-family:'DM Sans',sans-serif;font-size:32px;font-weight:200;color:var(--white);letter-spacing:8px;line-height:1;text-align:center;margin-bottom:12px;}
 .driver-tagline{font-size:9px;font-weight:300;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-top:0;text-align:center;}
@@ -115,14 +115,16 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
 .lang-btn.on::after{transform:scaleX(1);}
 .lang-sep{width:1px;height:10px;background:var(--gold-border);}
 
-.logo-tr{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;border:1px solid var(--gold-border-strong);background:radial-gradient(circle,#1C1408 0%,#0A0A0A 100%);margin-bottom:16px;position:relative;}
+.logo-tr{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;border:1px solid var(--gold-border-strong);background:radial-gradient(circle,#1C1408 0%,#000000 100%);margin-bottom:16px;position:relative;}
 .logo-tr::before{display:none;}
 .logo-tr-text{font-family:'Playfair Display',serif;font-size:24px;font-weight:500;color:var(--gold);letter-spacing:3px;position:relative;z-index:1;}
 
 
 
 
-.vehicle-img{width:100%;max-width:480px;height:auto;display:block;margin:-6px auto 6px;mix-blend-mode:screen;}
+.vehicle-img-wrap{position:relative;width:100%;max-width:480px;margin:-6px auto 6px;}
+.vehicle-img-wrap::after{content:'';position:absolute;bottom:0;left:0;right:0;height:55%;background:linear-gradient(to top,var(--black) 0%,transparent 100%);pointer-events:none;}
+.vehicle-img{width:100%;height:auto;display:block;mix-blend-mode:screen;}
 .vehicle-name{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;letter-spacing:8px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;opacity:.9;}
 .vehicle-name em{font-family:'DM Sans',sans-serif;font-style:normal;font-size:28px;font-weight:200;letter-spacing:2px;color:var(--white);display:block;margin-top:6px;line-height:1.1;}
 .vehicle-specs{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;}
@@ -131,7 +133,7 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
 .vspec-pill{font-size:11px;font-weight:300;letter-spacing:.5px;text-transform:none;color:var(--white);border:none;border-radius:20px;padding:3px 10px;background:rgba(255,255,255,.07);white-space:nowrap;}
 
 
-.services-list{display:flex;flex-direction:column;gap:52px;}
+.services-list{display:flex;flex-direction:column;gap:70px;}
 .service-row{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;}
 .service-dot{display:none;}
 .service-left{display:flex;flex-direction:column;align-items:center;gap:0;}
@@ -145,7 +147,8 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
 .experience-card::before{display:none;}
 .experience-eyebrow{font-family:'Playfair Display',serif;font-size:28px;font-weight:300;color:var(--white);text-align:center;letter-spacing:1px;line-height:1.2;padding-top:0;margin-bottom:20px;}
 .exp-vehicle{text-align:center;padding:0 22px 28px;}
-.exp-vehicle .vehicle-img{width:100%;max-width:390px;height:auto;display:block;margin:4px auto 10px;mix-blend-mode:screen;}
+.exp-vehicle .vehicle-img-wrap{max-width:390px;margin:4px auto 10px;}
+.exp-vehicle .vehicle-img{width:100%;height:auto;display:block;mix-blend-mode:screen;}
 
 .exp-vehicle .vehicle-specs{gap:24px;}
 .exp-vehicle .vspec{font-size:11px;letter-spacing:.15em;}
@@ -193,10 +196,10 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
 @keyframes luxuryShake{0%,100%{transform:translateX(0);}20%,60%{transform:translateX(-4px);}40%,80%{transform:translateX(4px);}}
 
 .acw{position:relative;}
-.acl{position:absolute;top:100%;left:0;right:0;background:#1E1E1E;border:1px solid rgba(255,255,255,0.08);border-top:none;z-index:200;max-height:200px;overflow-y:auto;display:none;}
+.acl{position:absolute;top:100%;left:0;right:0;background:#0D0D0D;border:1px solid rgba(255,255,255,0.08);border-top:none;z-index:200;max-height:200px;overflow-y:auto;display:none;}
 .acl.open{display:block;}
 .aci{padding:12px 14px;font-size:12px;color:var(--muted);cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.05);}
-.aci:active,.aci:hover{background:#1a1a1a;color:var(--gold);}
+.aci:active,.aci:hover{background:#0a0a0a;color:var(--gold);}
 
 .type-btns{display:flex;flex-direction:column;gap:0;margin-bottom:0;}
 .type-btn{
@@ -257,6 +260,10 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
 .pamt span{display:none;}
 .pdisclaim{font-size:10px;color:var(--subtle);margin-top:14px;line-height:1.8;letter-spacing:.5px;display:none;padding-top:14px;border-top:1px solid rgba(255,255,255,0.06);}
 .pdisclaim.show{display:block;}
+
+.devis-bar{display:flex;align-items:flex-start;gap:12px;background:rgba(200,169,110,.04);border:1px solid rgba(200,169,110,.15);border-radius:4px;padding:16px 18px;margin-top:24px;animation:priceFadeIn .35s ease forwards;}
+.devis-icon{flex-shrink:0;color:var(--gold);opacity:.6;margin-top:1px;}
+.devis-text{font-size:12px;font-weight:300;color:var(--muted);letter-spacing:.3px;line-height:1.9;}
 .ploading{display:none;font-size:11px;color:var(--muted);font-style:italic;margin-top:8px;letter-spacing:1.5px;}
 .ploading.show{display:block;}
 
@@ -304,7 +311,7 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
 .btn-cta{width:100%;background:var(--gold);border:1px solid var(--gold);border-radius:50px;color:var(--black);font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;padding:14px 20px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:10px;transition:background .35s,border-color .35s,color .35s;position:relative;overflow:hidden;}
 .btn-cta::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.45) 50%,transparent 100%);transform:translateX(-100%) skewX(-15deg);pointer-events:none;border-radius:50px;}
 .btn-cta.ring-draw::before{animation:shimmer .65s cubic-bezier(.4,0,.2,1) forwards;}
-.wa-icon{width:15px;height:15px;flex-shrink:0;fill:#0A0A0A;opacity:.7;}
+.wa-icon{width:15px;height:15px;flex-shrink:0;fill:#000000;opacity:.7;}
 
 .share-btn{display:flex;align-items:center;gap:9px;background:transparent;border:1px solid var(--gold-border);border-radius:1px;padding:10px 20px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--subtle);transition:color .3s,border-color .3s;position:relative;overflow:hidden;touch-action:manipulation;}
 .share-btn:active{border-color:var(--gold-border-strong);color:var(--gold);}
@@ -330,9 +337,9 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
 .footer-email:active{color:var(--gold);}
 .footer-block{width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;padding:24px 0;position:relative;}
 .footer-block+.footer-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(200,169,110,.08),transparent);}
-.footer-rgpd-label{font-size:9px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.5;}
-.footer-rgpd-text{font-size:9px;font-weight:300;color:var(--subtle);letter-spacing:.4px;line-height:2;text-align:center;}
-.footer-legal-text{font-size:9px;color:rgba(142,142,147,.55);letter-spacing:.4px;text-align:center;line-height:2.2;}
+.footer-rgpd-label{font-size:10px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.5;}
+.footer-rgpd-text{font-size:10px;font-weight:300;color:var(--subtle);letter-spacing:.4px;line-height:2;text-align:center;}
+.footer-legal-text{font-size:10px;color:rgba(142,142,147,.55);letter-spacing:.4px;text-align:center;line-height:2.2;}
 .footer-legal-btns{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;}
 .footer-diamond{width:3px;height:3px;background:var(--gold);transform:rotate(45deg);opacity:.25;flex-shrink:0;}
 
@@ -437,7 +444,7 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
 .modal-instruct strong{color:var(--gold-80);font-weight:400;}
 .modal-btns{display:flex;flex-direction:column;gap:10px;}
 .modal-btn-confirm{width:100%;background:#C8A96E;border:1px solid #C8A96E;border-radius:50px;color:var(--black);font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;padding:11px 20px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .3s,border-color .3s;touch-action:manipulation;}
-.modal-btn-confirm svg{width:14px;height:14px;fill:#0A0A0A;opacity:.7;}
+.modal-btn-confirm svg{width:14px;height:14px;fill:#000000;opacity:.7;}
 .modal-btn-cancel{width:100%;background:transparent;border:none;color:var(--subtle);font-family:'DM Sans',sans-serif;font-size:10px;font-weight:400;letter-spacing:3px;text-transform:uppercase;padding:10px;cursor:pointer;text-align:center;touch-action:manipulation;transition:color .2s;}
 .modal-btn-cancel:active{color:var(--subtle);}
 
@@ -472,10 +479,9 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
 }
 
 .hero-img-wrap{position:relative;width:100%;overflow:hidden;aspect-ratio:767/1171;display:flex;flex-direction:column;}
-.hero-img-wrap img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block;}
-.hero-img-extend{position:absolute;bottom:0;left:0;right:0;height:45%;background:linear-gradient(to bottom,transparent 0%,#0A0A0A 70%);}
-50%{opacity:.9;transform:translateY(5px);}}
-.hero-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(6,6,6,.15) 0%,rgba(6,6,6,0) 10%,rgba(6,6,6,0) 70%,rgba(6,6,6,.75) 85%,#0A0A0A 97%,#0A0A0A 100%);pointer-events:none;z-index:1;}
+.hero-img-wrap img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block;-webkit-mask-image:linear-gradient(to bottom,black 0%,black 65%,transparent 90%);mask-image:linear-gradient(to bottom,black 0%,black 65%,transparent 90%);}
+.hero-img-extend{display:none;}
+.hero-img-wrap::after{display:none;}
 .hero-img-wrap::before{display:none;}
 .hero-overlay{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;padding:24px 22px 40px;text-align:center;}
 .hero-lang{display:inline-flex;align-items:center;gap:12px;}
@@ -525,18 +531,18 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
     <div style="margin-bottom:0;">
       <label id="l-type" style="font-size:10px;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;color:var(--white);opacity:1;display:block;margin-bottom:6px;margin-top:0;">Type de course</label>
       <div class="type-btns" id="type-btns">
-        <div><button class="type-btn on" data-val="trajet" onclick="selectType(this,'trajet')" type="button" aria-label="Trajet point à point"><div class="type-btn-dot"></div><div class="type-btn-content"><span class="type-btn-label" id="o-trajet">Trajet point &agrave; point</span></div></button></div>
-        <div><button class="type-btn" data-val="dispo" onclick="selectType(this,'dispo')" type="button" aria-label="Mise à disposition"><div class="type-btn-dot"></div><div class="type-btn-content"><span class="type-btn-label" id="o-dispo">Mise &agrave; disposition</span></div></button></div>
-        <div><button class="type-btn" data-val="longue" onclick="selectType(this,'longue')" type="button" aria-label="Longue distance"><div class="type-btn-dot"></div><div class="type-btn-content"><span class="type-btn-label" id="o-longue">Longue distance (+100 km)</span></div></button></div>
+        <div><button class="type-btn on" data-val="trajet" onclick="selectType(this,'trajet')" type="button" aria-label="Trajet point à point"><div class="type-btn-dot"></div><div class="type-btn-content"><span class="type-btn-label" id="o-trajet">Trajet simple</span><span class="type-btn-sub" id="o-trajet-sub">Course standard</span></div></button></div>
+        <div><button class="type-btn" data-val="dispo" onclick="selectType(this,'dispo')" type="button" aria-label="Mise à disposition"><div class="type-btn-dot"></div><div class="type-btn-content"><span class="type-btn-label" id="o-dispo">&Agrave; disposition</span><span class="type-btn-sub" id="o-dispo-sub">Dur&eacute;e sur mesure</span></div></button></div>
+        <div><button class="type-btn" data-val="longue" onclick="selectType(this,'longue')" type="button" aria-label="Longue distance"><div class="type-btn-dot"></div><div class="type-btn-content"><span class="type-btn-label" id="o-longue">Longue distance</span><span class="type-btn-sub" id="o-longue-sub">Hors agglom&eacute;ration</span></div></button></div>
 </div>
       
       <select id="type-course" style="display:none;">
-        <option value="trajet">Trajet point à point</option>
-        <option value="dispo">Mise à disposition</option>
-        <option value="longue">Longue distance (+100 km)</option>
+        <option value="trajet">Trajet simple</option>
+        <option value="dispo">À disposition</option>
+        <option value="longue">Longue distance</option>
       </select>
     </div>
-    <div class="fg s" style="margin-top:20px;margin-bottom:0;">
+    <div class="fg s" style="margin-top:20px;margin-bottom:0;" id="dep-field-wrap">
       <div class="field" style="margin-bottom:0;">
         <label id="l-dep">Adresse de d&eacute;part</label>
         <div class="fw acw">
@@ -546,7 +552,7 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
         <div class="soft-hint" id="soft-dep"></div>
       </div>
     </div>
-    <div class="fg s" style="margin-top:20px;margin-bottom:0;">
+    <div class="fg s" style="margin-top:20px;margin-bottom:0;" id="arr-field-wrap">
       <div class="field">
         <label id="l-arr">Adresse d&apos;arriv&eacute;e</label>
         <div class="fw acw">
@@ -614,6 +620,12 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
       </div>
     </div>
     <div class="pdisclaim" id="pdisclaim"><span id="disclaim-txt">Tarif indicatif &middot; Prix d&eacute;finitif confirm&eacute; avant validation</span></div>
+    <div class="devis-bar" id="devis-bar" style="display:none;">
+      <div class="devis-icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <div class="devis-text" id="devis-text">Tarif &eacute;tabli sur devis &mdash; Thierry vous confirmera le montant avant la course.</div>
+    </div>
     <div class="ploading" id="ploading">Calcul de l&apos;itin&eacute;raire&hellip;</div>
   </div>
 
@@ -681,8 +693,10 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
     <h2 class="experience-eyebrow" id="exp-eyebrow">Votre v&eacute;hicule</h2>
     
     <div class="exp-vehicle">
-    <img class="vehicle-img" src="voiture-profil.webp" alt="BMW i4 eDrive 40" width="480" height="270" loading="lazy" decoding="async">
-    <div class="vehicle-name"><span>BMW</span><em id="vname">i4 eDrive 40</em></div>
+    <div class="vehicle-img-wrap">
+    <img class="vehicle-img" src="voiture-profil.webp" alt="BMW i4 Gran Coupé" width="480" height="270" loading="lazy" decoding="async">
+    </div>
+    <div class="vehicle-name"><span>BMW</span><em id="vname">i4 Gran Coupé</em></div>
     <div class="vehicle-specs">
       <span class="vspec-pill" id="vs1">Cuir premium</span>
       <span class="vspec-pill" id="vs2">5 places</span>
@@ -691,7 +705,7 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
   </div>
 
     <div class="exp-services">
-    <h2 class="experience-eyebrow" id="services-eyebrow" style="padding-top:0;margin-top:88px;margin-bottom:28px;">Vos services</h2>
+    <h2 class="experience-eyebrow" id="services-eyebrow" style="padding-top:0;margin-top:88px;margin-bottom:52px;">Vos services</h2>
     <div class="services-list">
       <div class="service-row">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6 10 4 14 4 16a8 8 0 0016 0c0-2-2-6-8-14z"/></svg></div>
@@ -1010,9 +1024,9 @@ const COMMON=[
 
 // Static reviews always visible; dynamic ones appended
 const STATIC_REVS=[
-  {name:"Marc L.",stars:5,date:"8 mai 2026",txt:"Trajet a\u00e9roport impeccable. Voiture superbe, chauffeur discret et ponctuel. Je reviendrai sans h\u00e9siter."},
-  {name:"Sophie G.",stars:5,date:"24 avril 2026",txt:"Service irr\u00e9prochable du d\u00e9but \u00e0 la fin. Thierry est professionnel et la BMW i4 est un vrai plaisir."},
-  {name:"James H.",stars:5,date:"11 avril 2026",txt:"Perfect service for our business trip. Quiet, punctual, premium car. Highly recommended."}
+  {name:"Marie-Claire T.",stars:5,date:"Printemps 2026",txt:"Trajet a\u00e9roport impeccable. Voiture superbe, chauffeur discret et ponctuel. Je reviendrai sans h\u00e9siter."},
+  {name:"François D.",stars:5,date:"Avril 2026",txt:"Service irr\u00e9prochable du d\u00e9but \u00e0 la fin. Thierry est professionnel et la BMW i4 est un vrai plaisir."},
+  {name:"David K.",stars:5,date:"Avril 2026",txt:"Perfect service for our business trip. Quiet, punctual, premium car. Highly recommended."}
 ];
 
 let _carIdx=0,_carTotal=0,_carAuto=null,_touchX=null;
@@ -1139,10 +1153,10 @@ const T={
     servicesTitle:"On-board services",
     expEyebrow:"Your vehicle",
     servicesEyebrow:"Your services",
-    sv1l:"Refreshments",sv1s:"Complimentary mineral water on every ride, so you never have to think about it.",
-    sv2l:"Connectivity",sv2s:"Charge your devices on board, USB-A, USB-C and Lightning.",
-    sv3l:"Sound ambience",sv3s:"Your playlist, the radio, or complete silence. You decide.",
-    sv4l:"Electric vehicle",sv4s:"Fully electric BMW i4, silent and zero emissions.",
+    sv1l:"Electric vehicle",sv1s:"Fully electric BMW i4, silent and zero emissions.",
+    sv2l:"Refreshments",sv2s:"Mineral water on board, because every detail matters.",
+    sv3l:"Connectivity",sv3s:"Charge your devices on board. USB-A, USB-C and Lightning available.",
+    sv4l:"Sound ambience",sv4s:"Your playlist, the radio, or complete silence. You decide.",
     paymentLabel:"I prefer to pay online",paymentSub:"The driver will send you a SumUp payment link",
     paxNotice:"4th passenger on request \u2014 middle rear seat only",
     partnerNotice:"Your chauffeur personally handles every ride. In case of exceptional unavailability, a <em>certified VTC chauffeur</em> takes over.",
@@ -1150,7 +1164,8 @@ const T={
     c1:"Your journey",c2:"Date \u00b7 Time",c3:"Your details",c4:"",
     testimonialsTitle:"Reviews",
     lType:"Trip type",
-    typeOpts:["Point to point","Private hire by the hour","Extended journey (+100 km)"],
+    typeOpts:["Single journey","Private hire","Long distance"],
+    typeSubOpts:["Standard ride","Tailored duration","Outside the city"],
     lDep:"Pickup address ",placeDep:"Toulouse-Blagnac Airport",hintDep:"",
     autofilled:"\u2713 Address pre-filled automatically",
     lArr:"Drop-off address ",placeArr:"Place du Capitole, Toulouse",hintArr:"",
@@ -1206,17 +1221,50 @@ function syncTypeSelect(v){
 function onType(v){
   cType=v;
   clearNotices();
-  updatePrice();
-  if(depC&&arrC&&_baseDm){
-    const smartDm=applyTrafficFactor(_baseDm);
-    document.getElementById("pduration").textContent=formatDuration(smartDm);
-  }
   const t=T[lang];
+  const arrWrap=document.getElementById("arr-field-wrap");
+  const arrInput=document.getElementById("arrivee");
+  const arrLabel=document.getElementById("l-arr");
+  const devisBar=document.getElementById("devis-bar");
+  const devisText=document.getElementById("devis-text");
+
+  if(v==="dispo"){
+    // Champ arrivée → zone libre sans autocomplete
+    arrLabel.textContent=lang==="fr"?"Secteur souhait\u00e9 (optionnel)":"Preferred area (optional)";
+    arrInput.placeholder=lang==="fr"?"Ex\u00a0: Centre-ville, Blagnac, Muret\u2026":"E.g. City centre, Blagnac, Muret\u2026";
+    arrInput.oninput=null; // désactiver autocomplete
+    arrInput.removeAttribute("oninput");
+    document.getElementById("larr").classList.remove("open");
+    arrC=null;
+    // Afficher devis, masquer prix
+    devisText.textContent=lang==="fr"
+      ?"Tarif \u00e9tabli sur devis \u2014 Thierry vous confirmera le montant avant la course."
+      :"Fare established on quote \u2014 Thierry will confirm the amount before your ride.";
+    devisBar.style.display="flex";
+  } else if(v==="longue"){
+    // Champ arrivée normal
+    arrLabel.textContent=lang==="fr"?"Adresse d\u2019arriv\u00e9e":"Drop-off address";
+    arrInput.placeholder=lang==="fr"?"Paris, Lyon, Barcelone\u2026":"Paris, Lyon, Barcelona\u2026";
+    arrInput.setAttribute("oninput","ac(this,'larr')");
+    // Afficher devis, masquer prix
+    devisText.textContent=lang==="fr"
+      ?"Tarif \u00e9tabli sur devis \u2014 Thierry vous confirmera le montant avant la course."
+      :"Fare established on quote \u2014 Thierry will confirm the amount before your ride.";
+    devisBar.style.display="flex";
+  } else {
+    // Trajet simple — tout normal
+    arrLabel.textContent=lang==="fr"?"Adresse d\u2019arriv\u00e9e":"Drop-off address";
+    arrInput.placeholder=lang==="fr"?"Place du Capitole, Toulouse":"Place du Capitole, Toulouse";
+    arrInput.setAttribute("oninput","ac(this,'larr')");
+    devisBar.style.display="none";
+    if(depC&&arrC&&distKm) updatePrice();
+  }
   document.getElementById("client-msg").placeholder=t.msgPlaceholders.default;
 }
 function clearNotices(){
   document.getElementById("pbar").style.display="none";
   document.getElementById("pdisclaim").classList.remove("show");
+  const db=document.getElementById("devis-bar");if(db)db.style.display="none";
 }
 function ac(inp,lid){
   const q=inp.value.trim().toLowerCase(),list=document.getElementById(lid);
@@ -1521,7 +1569,8 @@ function getPriceCoef(){
 }
 function updatePrice(){
   if(!distKm)return;
-  if(cType==="longue"&&!distKm){
+  // Pour dispo et longue : pas de barre de prix, le devis-bar est déjà visible
+  if(cType==="dispo"||cType==="longue"){
     document.getElementById("pbar").style.display="none";
     return;
   }
@@ -1532,9 +1581,6 @@ function updatePrice(){
   pr=Math.max(10,pr); // minimum strict 10€
   // Majorations
   pr=pr*coef;
-  // Types spéciaux
-  if(cType==="dispo") pr=Math.max(pr,60);
-  if(cType==="longue") pr*=0.95;
   pr=Math.max(10,Math.round(pr));
   document.getElementById("pdist").textContent=distKm+" km";
   const pamtEl=document.getElementById("pamt");pamtEl.className="pamt";pamtEl.textContent=pr;
@@ -1700,7 +1746,7 @@ function openModal(){
   const heure=document.getElementById("heure-course").value;
   const nom=document.getElementById("client-nom").value.trim();
   const tel=document.getElementById("client-tel").value.trim();
-  if(!dep||!arr||!date||!heure||!nom||!tel){
+  if(!dep||(!isArrRequired()?false:!arr)||!date||!heure||!nom||!tel){
     document.getElementById("err-form").classList.add("show");
     document.getElementById("err-tel").classList.remove("show");
     return;
@@ -1814,7 +1860,7 @@ function showSentState(){
 function resetForm(){
   // Réinitialiser les champs
   ["depart","arrivee","client-nom","client-tel","client-msg"].forEach(id=>{
-    const el=document.getElementById(id);if(el)el.value="";
+    const el=document.getElementById(id);if(el){el.value="";el.classList.remove("field-error","field-valid");}
   });
   depC=null;arrC=null;distKm=null;_baseDm=0;_prevDep="";_prevArr="";
   wantsRetour=false;wantsOnlinePayment=false;
@@ -1822,8 +1868,16 @@ function resetForm(){
   document.getElementById("payment-check").classList.remove("on");
   document.getElementById("pbar").style.display="none";
   document.getElementById("pdisclaim").classList.remove("show");
+  const db=document.getElementById("devis-bar");if(db)db.style.display="none";
+  // Cacher les erreurs
+  document.getElementById("err-form").classList.remove("show");
+  document.getElementById("err-tel").classList.remove("show");
+  document.getElementById("err-addr").classList.remove("show");
+  // Cacher soft hints
+  _clearSoftHint("ldep");_clearSoftHint("larr");
   // Remettre le type par défaut
-  selectType(document.querySelector(".type-btn"),  "trajet");
+  const firstTypeBtn=document.querySelector(".type-btn");
+  if(firstTypeBtn) selectType(firstTypeBtn,"trajet");
   // Cacher l'état post-envoi, réafficher le bouton
   const sentState=document.getElementById("sent-state");
   const ctaBtn=document.getElementById("btn-cta");
@@ -1860,25 +1914,30 @@ function buildMessage(){
   const distTxt=distKm&&distEl.textContent?distEl.textContent:"";
   const durTxt=distKm&&durEl.textContent?durEl.textContent:"";
   const trajetLine=distTxt&&durTxt?(lang==="fr"?"\nDistance : "+distTxt+" · Durée estimée : "+durTxt:"\nDistance: "+distTxt+" · Est. time: "+durTxt):"";
-  const tarifLine=prixRaw?(lang==="fr"?"\nTarif indicatif : "+prixRaw+" €":"\nEstimated fare: "+prixRaw+" €"):"";
+  const arrLine=isArrRequired()?"\nArriv\u00e9e \u00b7 "+arr:(arr?"\nSecteur \u00b7 "+arr:"");
+  const arrLineEN=isArrRequired()?"\nDrop-off \u00b7 "+arr:(arr?"\nArea \u00b7 "+arr:"");
+  const isDevis=(cType==="dispo"||cType==="longue");
+  const tarifLineDevis=isDevis?(lang==="fr"?"\nTarif : Sur devis":"\nFare: On quote"):"";
+  const tarifLineCalc=(!isDevis&&prixRaw)?(lang==="fr"?"\nTarif indicatif : "+prixRaw+" \u20ac":"\nEstimated fare: "+prixRaw+" \u20ac"):"";
+  const tarifLine=isDevis?tarifLineDevis:tarifLineCalc;
   let txt;
   if(lang==="fr"){
-    txt="Demande de réservation — Premium VTC Transfer"
-      +"\n\n"+nom+" · "+tel
-      +"\n\nDépart · "+dep
-      +"\nArrivée · "+arr
+    txt="Demande de r\u00e9servation \u2014 Premium VTC Transfer"
+      +"\n\n"+nom+" \u00b7 "+tel
+      +"\n\nD\u00e9part \u00b7 "+dep
+      +arrLine
       +typeLine
-      +"\n"+dateFr+" · "+heure+" · "+pax+(pax==="1"?" passager":" passagers")
-      +trajetLine+tarifLine+extrasBlock
+      +"\n"+dateFr+" \u00b7 "+heure+" \u00b7 "+pax+(pax==="1"?" passager":" passagers")
+      +(isDevis?"":trajetLine)+tarifLine+extrasBlock
       +"\n\npremiumvtctransfer.fr";
   } else {
-    txt="Booking request — Premium VTC Transfer"
-      +"\n\n"+nom+" · "+tel
-      +"\n\nPickup · "+dep
-      +"\nDrop-off · "+arr
+    txt="Booking request \u2014 Premium VTC Transfer"
+      +"\n\n"+nom+" \u00b7 "+tel
+      +"\n\nPickup \u00b7 "+dep
+      +arrLineEN
       +typeLine
-      +"\n"+dateFr+" · "+heure+" · "+pax+(pax==="1"?" passenger":" passengers")
-      +trajetLine+tarifLine+extrasBlock
+      +"\n"+dateFr+" \u00b7 "+heure+" \u00b7 "+pax+(pax==="1"?" passenger":" passengers")
+      +(isDevis?"":trajetLine)+tarifLine+extrasBlock
       +"\n\npremiumvtctransfer.fr";
   }
   return {txt,nom,dep,arr,date,heure,pax};
@@ -1892,7 +1951,8 @@ function sendEmail(e){
   const heure=document.getElementById("heure-course").value;
   const nom=document.getElementById("client-nom").value.trim();
   const tel=document.getElementById("client-tel").value.trim();
-  if(!dep||!arr||!date||!heure||!nom||!tel){document.getElementById("err-form").classList.add("show");document.getElementById("err-tel").classList.remove("show");return;}
+  const arrOk=isArrRequired()?!!arr:true;
+  if(!dep||!arrOk||!date||!heure||!nom||!tel){document.getElementById("err-form").classList.add("show");document.getElementById("err-tel").classList.remove("show");return;}
   document.getElementById("err-form").classList.remove("show");
   if(!isValidPhone(tel)){document.getElementById("err-tel").classList.add("show");document.getElementById("client-tel").classList.add("field-error");return;}
   document.getElementById("err-tel").classList.remove("show");
@@ -1903,8 +1963,10 @@ function sendEmail(e){
 }
 
 const REQUIRED_FIELDS=["depart","arrivee","date-course","heure-course","client-nom","client-tel"];
+function isArrRequired(){return cType!=="dispo";}
 function validateField(el){
   if(!el||!REQUIRED_FIELDS.includes(el.id))return;
+  if(el.id==="arrivee"&&!isArrRequired()){el.classList.remove("field-error");return;}
   if(el.id==="client-tel"){
     const ok=isValidPhone(el.value.trim());
     if(!ok){el.classList.add("field-error");el.classList.remove("field-valid");}
