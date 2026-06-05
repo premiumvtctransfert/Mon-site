@@ -148,5 +148,16 @@ return/^(\+|00)?[1-9]\d{7,14}$/.test(clean)&&clean.replace(/^\+/,``).replace(/^0
 stepPax(0),((navigator.language||navigator.userLanguage||`fr`).slice(0,2).toLowerCase()===`fr`?`fr`:`en`)!=`fr`&&setLang(`en`);
 // iOS Safari : détection des suggestions natives (pas d'events JS standards)
 // Stratégie : events natifs en priorité, fallback polling uniquement quand champ actif
-let _prevDep=``,_prevArr=``,_geocodingDep=!1,_geocodingArr=!1,`depart`,`arrivee`].forEach(id=>{let el=document.getElementById(id);if(!el)return;el.addEventListener(`input`,()=>{let v=el.value.trim();if(id===`depart`){depC=null;_geocodingDep=!1;_clearSoftHint(`ldep`);if(v.length>2&&!_geocodingDep){_geocodingDep=!0;geocodeFallback(v,`ldep`).then(()=>{_geocodingDep=!1;});}}else{arrC=null;_geocodingArr=!1;_clearSoftHint(`larr`);if(v.length>2&&!_geocodingArr){_geocodingArr=!0;geocodeFallback(v,`larr`).then(()=>{_geocodingArr=!1;});}}});el.addEventListener(`change`,()=>el.dispatchEvent(new Event(`input`)));});</script><script>// Lock portrait via Screen Orientation API (PWA / Android Chrome)
+let _prevDep=``,_prevArr=``,_geocodingDep=!1,_geocodingArr=!1,`depart`,`arrivee`].forEach(id=>{let el=document.getElementById(id);if(!el)return;
+// Bloquer la suggestion Apple (QuickType) : on mémorise la valeur au focus
+// et on annule tout changement qui ne vient pas d'une frappe clavier directe
+let _lastKeyTime=0,_savedVal=``;
+el.addEventListener(`keydown`,()=>{_lastKeyTime=Date.now();});
+el.addEventListener(`focus`,()=>{_savedVal=el.value;});
+el.addEventListener(`input`,()=>{
+// Si aucune frappe clavier dans les 300ms qui précèdent → c'est iOS QuickType
+let isQuickType=Date.now()-_lastKeyTime>300;
+if(isQuickType&&_lastKeyTime>0){el.value=_savedVal;return;}
+_savedVal=el.value;
+let v=el.value.trim();if(id===`depart`){depC=null;_geocodingDep=!1;_clearSoftHint(`ldep`);if(v.length>2&&!_geocodingDep){_geocodingDep=!0;geocodeFallback(v,`ldep`).then(()=>{_geocodingDep=!1;});}}else{arrC=null;_geocodingArr=!1;_clearSoftHint(`larr`);if(v.length>2&&!_geocodingArr){_geocodingArr=!0;geocodeFallback(v,`larr`).then(()=>{_geocodingArr=!1;});}}});el.addEventListener(`change`,()=>el.dispatchEvent(new Event(`input`)));});</script><script>// Lock portrait via Screen Orientation API (PWA / Android Chrome)
 screen.orientation&&screen.orientation.lock&&screen.orientation.lock(`portrait`).catch(()=>{});</script><script>function dismissOrientation(){var m=document.getElementById("orientation-msg");if(m)m.style.display="none";document.body.classList.add("landscape-override");}</script>
