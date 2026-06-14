@@ -480,7 +480,7 @@ function goToStep2(){
   // Déplacer step2-content dans l'overlay
   let s2=document.getElementById('step2-content');
   let anchor=document.getElementById('pc-step2-anchor');
-  if(s2&&anchor){anchor.appendChild(s2);s2.style.display='';}
+  if(s2&&anchor){anchor.appendChild(s2);s2.style.display='flex';s2.style.flexDirection='column';s2.style.gap='20px';}
   // Remplir recap
   let rDep=document.getElementById('recap-dep');if(rDep)rDep.textContent=dep;
   let rArr=document.getElementById('recap-arr');if(rArr)rArr.textContent=arr||'—';
