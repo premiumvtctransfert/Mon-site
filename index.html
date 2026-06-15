@@ -161,9 +161,28 @@ let body=document.querySelector(`.legal-modal-body`);body&&(body.scrollTop=0)}
 // Swipe-down pour fermer la modale légale
 (function(){let _sy=null,getBox=()=>document.getElementById(`legal-box`);document.addEventListener(`touchstart`,e=>{let b=getBox();!b||!_legalOpen||b.contains(e.target)&&(_sy=e.touches[0].clientY)},{passive:!0}),document.addEventListener(`touchend`,e=>{if(!_legalOpen||_sy===null)return;let dy=e.changedTouches[0].clientY-_sy;_sy=null,dy>80&&closeLegal()},{passive:!0})})();function confirmSend(){closeModal();let{txt}=buildMessage(),waUrl=`https://wa.me/`+WA+`?text=`+encodeURIComponent(txt),waLink=document.createElement(`a`);
 // Afficher l'état post-envoi après retour sur la page
-waLink.href=waUrl,waLink.target=`_blank`,waLink.rel=`noopener noreferrer`,document.body.appendChild(waLink),waLink.click(),document.body.removeChild(waLink),setTimeout(showSentState,800)}function showSentState(){let t=T[lang],sentState=document.getElementById(`sent-state`);let formCard=document.querySelector(`.form-card`);if(formCard){Array.from(formCard.children).forEach(el=>{if(el.id!==`sent-state`)el.style.display=`none`;});}setTimeout(()=>{sentState&&sentState.classList.add(`show`)},50);
+waLink.href=waUrl,waLink.target=`_blank`,waLink.rel=`noopener noreferrer`,document.body.appendChild(waLink),waLink.click(),document.body.removeChild(waLink),setTimeout(showSentState,800)}function showSentState(){let t=T[lang],sentState=document.getElementById(`sent-state`);
+// Masquer recap + step2-content dans l'overlay, afficher sent-state à la place
+let recapWrap=document.getElementById(`pc-recap-wrap`);
+let s2anchor=document.getElementById(`pc-step2-anchor`);
+let pcInner=document.querySelector(`.pc-inner`);
+if(recapWrap)recapWrap.style.display=`none`;
+if(s2anchor)s2anchor.style.display=`none`;
+// Déplacer sent-state dans pc-inner avant pc-footer
+let pcFooter=document.querySelector(`.pc-footer`);
+if(sentState&&pcInner&&pcFooter){pcInner.insertBefore(sentState,pcFooter);}
+setTimeout(()=>{sentState&&sentState.classList.add(`show`)},50);
 // Textes selon langue
-let sentTitle=document.getElementById(`sent-title`),sentMsg=document.getElementById(`sent-msg`),sentBtn=document.getElementById(`sent-new-btn`);sentTitle&&(sentTitle.textContent=lang===`fr`?`Demande envoyée`:`Request sent`),sentMsg&&(sentMsg.innerHTML=lang===`fr`?`Votre chauffeur vous confirmera<br>votre réservation sous peu.`:`Your chauffeur will confirm<br>your booking shortly.`),sentBtn&&(sentBtn.textContent=lang===`fr`?`Nouvelle réservation`:`New booking`)}function startReset(){let s=document.getElementById(`sent-state`);if(!s)return;s.style.animation=`sentExit .3s cubic-bezier(.4,0,.6,1) both`;setTimeout(()=>{let formCard=document.querySelector(`.form-card`);if(formCard){Array.from(formCard.children).forEach(el=>{if(el.id!==`sent-state`)el.style.display=``;});}goToStep1();resetForm();},300)}function resetForm(){[`depart`,`arrivee`,`client-nom`,`client-tel`,`client-msg`].forEach(id=>{let el=document.getElementById(id);el&&(el.value=``,el.classList.remove(`field-error`,`field-valid`))}),depC=null,arrC=null,distKm=null,_baseDm=0,_prevDep=``,_prevArr=``,wantsOnlinePayment=!1,document.getElementById(`payment-check`).classList.remove(`on`),document.getElementById(`pbar`).style.display=`none`,document.getElementById(`pdisclaim`).classList.remove(`show`);let db=document.getElementById(`devis-bar`);db&&(db.style.display=`none`),document.getElementById(`err-form`).classList.remove(`show`),document.getElementById(`err-tel`).classList.remove(`show`),document.getElementById(`err-addr`).classList.remove(`show`),_clearSoftHint(`ldep`),_clearSoftHint(`larr`);
+let sentTitle=document.getElementById(`sent-title`),sentMsg=document.getElementById(`sent-msg`),sentBtn=document.getElementById(`sent-new-btn`);sentTitle&&(sentTitle.textContent=lang===`fr`?`Demande envoyée`:`Request sent`),sentMsg&&(sentMsg.innerHTML=lang===`fr`?`Votre chauffeur vous confirmera<br>votre réservation sous peu.`:`Your chauffeur will confirm<br>your booking shortly.`),sentBtn&&(sentBtn.textContent=lang===`fr`?`Nouvelle réservation`:`New booking`)}function startReset(){let s=document.getElementById(`sent-state`);if(!s)return;s.style.animation=`sentExit .3s cubic-bezier(.4,0,.6,1) both`;setTimeout(()=>{
+// Réafficher recap + step2-content
+let recapWrap=document.getElementById(`pc-recap-wrap`);
+let s2anchor=document.getElementById(`pc-step2-anchor`);
+if(recapWrap)recapWrap.style.display=``;
+if(s2anchor)s2anchor.style.display=``;
+// Remettre sent-state dans step2-content
+let s2=document.getElementById(`step2-content`);
+if(s&&s2){s2.appendChild(s);s.classList.remove(`show`);s.style.animation=``;}
+goToStep1();resetForm();},300)}function resetForm(){[`depart`,`arrivee`,`client-nom`,`client-tel`,`client-msg`].forEach(id=>{let el=document.getElementById(id);el&&(el.value=``,el.classList.remove(`field-error`,`field-valid`))}),depC=null,arrC=null,distKm=null,_baseDm=0,_prevDep=``,_prevArr=``,wantsOnlinePayment=!1,document.getElementById(`payment-check`).classList.remove(`on`),document.getElementById(`pbar`).style.display=`none`,document.getElementById(`pdisclaim`).classList.remove(`show`);let db=document.getElementById(`devis-bar`);db&&(db.style.display=`none`),document.getElementById(`err-form`).classList.remove(`show`),document.getElementById(`err-tel`).classList.remove(`show`),document.getElementById(`err-addr`).classList.remove(`show`),_clearSoftHint(`ldep`),_clearSoftHint(`larr`);
 // Remettre le type par défaut (sans déclencher le select natif)
 document.querySelectorAll(`.type-btn`).forEach((b,i)=>{i===0?b.classList.add(`on`):b.classList.remove(`on`)});cType=`trajet`;if(typeof onType===`function`)onType(`trajet`);
 // Cacher l'état post-envoi, réafficher le bouton
