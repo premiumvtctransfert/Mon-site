@@ -550,4 +550,13 @@ window.addEventListener('load',function(){
   // Masquer step2-content au chargement
   let s2=document.getElementById('step2-content');if(s2)s2.style.display='none';
 });
+// Android : forcer l'ouverture du sélecteur natif Date / Heure au toucher
+(function(){
+  if(!/Android/i.test(navigator.userAgent))return;
+  ['date-course','heure-course'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(!el||typeof el.showPicker!=='function')return;
+    el.addEventListener('click',function(){try{el.showPicker();}catch(e){}});
+  });
+})();
 </script><div class=page-confirmation id=page-confirmation><div class=pc-inner><div class=pc-header><div class=pc-eyebrow id=pc-eyebrow>Premium VTC Transfer · Toulouse</div><div class=pc-title id=pc-title>Finalisez votre réservation</div></div><div class=pc-card><div class=recap-block id=recap-block><div class=recap-title>Récapitulatif</div><div class=recap-row><div class=recap-dot></div><div class=recap-label>Départ</div><div class=recap-val id=recap-dep></div></div><div class=recap-row><div class=recap-dot></div><div class=recap-label>Arrivée</div><div class=recap-val id=recap-arr></div></div><div class=recap-row><div class=recap-dot></div><div class=recap-label>Date</div><div class=recap-val id=recap-date></div></div><div class=recap-row><div class=recap-dot></div><div class=recap-label>Tarif</div><div class=recap-val id=recap-tarif></div></div></div></div><div id=pc-step2-anchor></div><div class=pc-footer><div class=pc-footer-block><div class=footer-brand-name>Premium VTC Transfer</div></div><div class=pc-footer-block><div class=footer-rgpd-label>Contact</div><div class=footer-contact-row><a class=fphone href=tel:+33625785232>+33 6 25 78 52 32</a><a class=footer-email href=mailto:contact@premiumvtctransfer.fr>contact@premiumvtctransfer.fr</a></div></div><div class=pc-footer-block><div class=footer-rgpd-label>Entreprise</div><div class=footer-legal-btns><button onclick="openLegal('ml')" class=legal-btn type=button>Mentions légales</button><button onclick="openLegal('cgv')" class=legal-btn type=button>CGV</button><button onclick="openLegal('rgpd')" class=legal-btn type=button>RGPD</button></div></div></div></div></div>
